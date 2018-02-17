@@ -1,0 +1,30 @@
+.sidebar-add {
+    border: thick;
+}
+
+.grid-topbar {
+    border-bottom: 3px solid #000;
+    background-color: #173e43;
+}
+
+.grid-sidebar {
+    text-transform: uppercase;
+    background-color: #173e43;
+}
+
+.grid-main {
+    background-color: #dddfd4;
+}
+
+.grid-main-info {
+    background-color: #6C648B;
+}
+
+.grid-main-content {
+    background-color: #6C648B;
+}
+
+.grid-footer {
+    background-color: grey;
+}
+

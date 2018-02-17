@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows:  repeat(12, 1fr);
+    grid-template-areas: "sidebar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar"
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar main main main main main main main main main main main" 
+                         "sidebar footer footer footer footer footer footer footer footer footer footer footer";
+}
+
+.grid-topbar {
+    grid-area: topbar;
+}
+
+.grid-sidebar {
+    grid-area: sidebar;
+}
+
+.grid-main {
+    grid-area: main;
+}
+
+.grid-main-info {
+    grid-area: main-info;
+}
+
+.grid-main-content {
+    grid-area: main-content;
+}
+
+.grid-footer {
+    grid-area: footer;
+}
