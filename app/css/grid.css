@@ -11,7 +11,7 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows:  repeat(12, 1fr);
-    grid-template-areas: "sidebar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar"
+    grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar"
                          "sidebar main main main main main main main main main main main" 
                          "sidebar main main main main main main main main main main main" 
                          "sidebar main main main main main main main main main main main" 
@@ -29,6 +29,10 @@ body {
     grid-area: topbar;
 }
 
+.logo {
+    grid-area: logo;
+}
+
 .grid-sidebar {
     grid-area: sidebar;
 }
@@ -38,13 +42,39 @@ body {
 }
 
 .grid-main-info {
-    grid-area: main-info;
+    grid-area: info;
 }
 
 .grid-main-content {
-    grid-area: main-content;
+    grid-area: content;
 }
 
 .grid-footer {
     grid-area: footer;
+}
+
+/* second grid inside grid-main-info rgba(162, 179, 181, 0.95);*/
+.grid-main-info {
+    
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows:  repeat(3, 1fr);
+    display: grid;
+    grid-template-areas: "title title"
+                         "name eta"
+                         "note note";
+}
+
+.grid-main-title {
+    grid-area: title;
+}
+
+.grid-main-name {
+    grid-area: name;
+}
+.grid-main-eta {
+    grid-area: eta;
+}
+
+.grid-main-note {
+    grid-area: note;
 }

@@ -1,39 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>ContOrga</title>
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-    <div class="grid-container">
-      <div class="grid-topbar">
-        test
-      </div>
-      <div class="grid-sidebar">
-        <div calss="sidebar-logo">
 
-        </div>
-        
-        <div class="sidebar-add">+</div>
-      </div>
-      <div class="grid-main">
-        <div class="grid-main-info">
+<head>
+  <meta charset="UTF-8">
+  <title>ContOrga</title>
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
 
-        </div>
-        <div class="grid-main-content">
-          
-        </div>
-      </div>
-      <div class="grid-footer">
+<body>
+  <div class="grid-container">
+    <div class="logo">
 
+    </div>
+    <div class="grid-topbar">
+      <div class="topbar-search">
+        <form>
+          <input type="text" name="search" placeholder="Suchen...">
+        </form>
       </div>
     </div>
-    <script>
+    <div class="grid-sidebar">
+
+      <div class="sidebar-add">+</div>
+    </div>
+    <div class="grid-main">
+      <div class="grid-main-wrap">
+        <div class="grid-main-info">
+          <div class="grid-main-title">
+            Schiffsinformationen
+          </div>
+          <div class="grid-main-name">
+            Name:
+          </div>
+          <div class="grid-main-eta">
+            ETA:
+          </div>
+          <div class="grid-main-note">
+            Notiz:
+          </div>
+        </div>
+        <div class="grid-main-content">
+          <div class="grid-main-title">
+            Containerliste
+          </div>
+          <table>
+            <thead>
+              <th>ID</th>
+              <th>Sdg Nr.</th>     
+              <th>Container Nr.</th>
+              <th>Löschdatum</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Abgabedatum</th>
+              <th>Notiz</th>
+            </thead>
+            <tr>
+              <td>1</td>
+              <td>57000</td>
+              <td>LAPD 1234567</td>
+              <td>Date</td>
+              <td>20:32</td>
+              <td>n.g./i.V./haken/leer</td>
+              <td>Date</td>
+              <td>Notiz</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>57001</td>
+              <td>ABCD 1234567</td>
+              <td>Date</td>
+              <td>20:42</td>
+              <td>n.g./i.V./haken/leer</td>
+              <td>Date</td>
+              <td>Notiz hallo dies ist ein test</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>57002</td>
+              <td>SEMM 1234567</td>
+              <td>Date</td>
+              <td>20:33</td>
+              <td>n.g./i.V./haken/leer</td>
+              <td>Date</td>
+              <td>Notiz</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="grid-footer">
+
+    </div>
+  </div>
+  <script>
       // You can also require other files to run in this process
       //require('./index.js');
       //require('./renderer.js')
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

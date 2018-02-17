@@ -1,30 +1,87 @@
+body {
+    font-family: Lato,Helvetica,sans-serif;
+    color: #fff;
+    line-height: 1.5;
+}
+
 .sidebar-add {
     border: thick;
 }
 
 .grid-topbar {
-    border-bottom: 3px solid #000;
-    background-color: #173e43;
+    border-bottom: 1px solid #000;
+    background-color: #202225;
+}
+
+.logo {
+    background-color: #202225;
 }
 
 .grid-sidebar {
+    border-right: 1px solid #000;
     text-transform: uppercase;
-    background-color: #173e43;
+    background-color: #202225;
 }
 
 .grid-main {
-    background-color: #dddfd4;
+    background: #2F3136;
+    position: relative;
+}
+.grid-main-wrap {
+    background: #484B51;
+    position: relative;
+    margin: 12px;
+    padding: 8px;
+    width: 90%;
+}
+.grid-main-info {
+    background: #484B51;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin: 5px;
 }
 
-.grid-main-info {
-    background-color: #6C648B;
+.grid-main-title {
+    background-color: #B9C300;
+    color: #333447;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
 }
+
 
 .grid-main-content {
-    background-color: #6C648B;
+    margin: 5px;
 }
 
 .grid-footer {
-    background-color: grey;
+    background-color: #484B51;
+    border-top: 1px solid #484B51;
+
 }
 
+table {
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+table th {
+    background-color: #484B51;
+    font-weight: bold;
+}
+table td {
+    border-bottom: 1px solid rgba(138, 137, 137, 0.301);
+    background: #FAFAFA;
+    text-align: center;
+}
+tr:hover {
+    background-color: rgb(15, 201, 9); 
+}
+
+tr:nth-child(even) td {
+    background: rgb(102, 107, 116); 
+}   
+    
+tr:nth-child(odd) td {
+    background: rgb(136, 143, 155); 
+}  
