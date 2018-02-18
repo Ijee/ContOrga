@@ -53,9 +53,15 @@ body {
     grid-area: footer;
 }
 
+.listitem {
+    
+}
+
+.addlistitem {
+    
+}
 /* second grid inside grid-main-info rgba(162, 179, 181, 0.95);*/
 .grid-main-info {
-    
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows:  repeat(3, 1fr);
     display: grid;
@@ -78,3 +84,4 @@ body {
 .grid-main-note {
     grid-area: note;
 }
+

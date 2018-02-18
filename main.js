@@ -15,9 +15,9 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800, 
+    width: 950, 
     height: 600,
-    minWidth: 800,
+    minWidth: 950,
     minHeight: 500
   })
   mainWindow.setMenu(null);
@@ -30,7 +30,7 @@ function createWindow () {
   }))
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

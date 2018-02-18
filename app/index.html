@@ -6,23 +6,25 @@
   <title>ContOrga</title>
   <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/main.css">
+  <script src="js/vue.js"></script>
+  <script src="js/index.js"></script>
 </head>
 
 <body>
-  <div class="grid-container">
+  <div id="app" class="grid-container">
     <div class="logo">
 
     </div>
     <div class="grid-topbar">
-      <div class="topbar-search">
-        <form>
-          <input type="text" name="search" placeholder="Suchen...">
-        </form>
-      </div>
+        {{ message }}
     </div>
     <div class="grid-sidebar">
-
-      <div class="sidebar-add">+</div>
+      <div class="grid-siderbar-wrap">
+        <div class="listitem">
+          <button type="button" class="btn listbtn listbtn-1">Item 1</button>
+        </div>
+        <div class="addlistitem">+</div>
+      </div>
     </div>
     <div class="grid-main">
       <div class="grid-main-wrap">
@@ -47,7 +49,7 @@
           <table>
             <thead>
               <th>ID</th>
-              <th>Sdg Nr.</th>     
+              <th>Sdg Nr.</th>
               <th>Container Nr.</th>
               <th>Löschdatum</th>
               <th>Time</th>
@@ -61,7 +63,7 @@
               <td>LAPD 1234567</td>
               <td>Date</td>
               <td>20:32</td>
-              <td>n.g./i.V./haken/leer</td>
+              <td>n.g./i.V./☑ /leer</td>
               <td>Date</td>
               <td>Notiz</td>
             </tr>
@@ -71,7 +73,7 @@
               <td>ABCD 1234567</td>
               <td>Date</td>
               <td>20:42</td>
-              <td>n.g./i.V./haken/leer</td>
+              <td>n.g./i.V./☑ /leer</td>
               <td>Date</td>
               <td>Notiz hallo dies ist ein test</td>
             </tr>
@@ -81,7 +83,7 @@
               <td>SEMM 1234567</td>
               <td>Date</td>
               <td>20:33</td>
-              <td>n.g./i.V./haken/leer</td>
+              <td>n.g./i.V./☑ /leer</td>
               <td>Date</td>
               <td>Notiz</td>
             </tr>
@@ -90,14 +92,25 @@
       </div>
     </div>
     <div class="grid-footer">
-
+      <div class="grid-search">
+        <form>
+          <input type="text" name="search" placeholder="Suchen...">
+        </form>
+      </div>
+      <div class="grid-exportall">
+        <button type="button" class="btn exportall">Alle Exportieren</button>
+      </div>
+      <div class="grid-exportlist">
+        <button type="button" class="btn exportlist">Liste Exportieren</button>
+      </div>
+      <div class="grid-removelist">
+        <button type="button" class="btn removelist">Liste entfernen</button>
+      </div>
     </div>
   </div>
-  <script>
-      // You can also require other files to run in this process
-      //require('./index.js');
-      //require('./renderer.js')
-  </script>
 </body>
-
+<script>
+    // You can also require other files to run in this process
+    require('./js/renderer.js')
+  </script>
 </html>
