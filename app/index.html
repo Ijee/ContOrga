@@ -16,15 +16,19 @@
 
     </div>
     <div class="grid-topbar">
-        {{ message }}
+      <span v-if="seen">Now you see me</span>
     </div>
     <div class="grid-sidebar">
       <div class="grid-siderbar-wrap">
-        <div class="listitem">
-          <button type="button" class="btn listbtn listbtn-1">Item 1</button>
+        <div class="listitem-container">
+          <div class="listitem">
+            <button type="button" class="btn listbtn listbtn-1">Item 1</button>
+          </div>
         </div>
-        <div class="addlistitem">+</div>
       </div>
+    </div>
+    <div class="addlistitem">
+      <button type="button" class="btn addbtn">+</button>
     </div>
     <div class="grid-main">
       <div class="grid-main-wrap">
@@ -58,34 +62,7 @@
               <th>Notiz</th>
             </thead>
             <tr>
-              <td>1</td>
-              <td>57000</td>
-              <td>LAPD 1234567</td>
-              <td>Date</td>
-              <td>20:32</td>
-              <td>n.g./i.V./☑ /leer</td>
-              <td>Date</td>
-              <td>Notiz</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>57001</td>
-              <td>ABCD 1234567</td>
-              <td>Date</td>
-              <td>20:42</td>
-              <td>n.g./i.V./☑ /leer</td>
-              <td>Date</td>
-              <td>Notiz hallo dies ist ein test</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>57002</td>
-              <td>SEMM 1234567</td>
-              <td>Date</td>
-              <td>20:33</td>
-              <td>n.g./i.V./☑ /leer</td>
-              <td>Date</td>
-              <td>Notiz</td>
+
             </tr>
           </table>
         </div>
@@ -110,7 +87,8 @@
   </div>
 </body>
 <script>
-    // You can also require other files to run in this process
-    require('./js/renderer.js')
-  </script>
+  // You can also require other files to run in this process
+  require('./js/renderer.js')
+</script>
+
 </html>

@@ -23,6 +23,16 @@ body {
     background-color: #202225;
 }
 
+.grid-sidebar-wrap {
+    position: relative;
+}
+
+.addlistitem {
+    border-right: 1px solid #000;
+    background-color: #202225;
+    width: 100%;
+}
+
 .grid-main {
     background: #2F3136;
     position: relative;
@@ -61,7 +71,7 @@ body {
 
 .grid-footer {
     background-color: #484B51;
-    border-top: 1px solid #484B51;
+    border-top: 1px solid #000;
     position: relative;
 }
 
@@ -70,10 +80,6 @@ body {
     transform: translateY(50%);
     float: left;
     width: auto;
-}
-
-.grid-search form {
-    
 }
 
 .grid-search input[type=text] {
@@ -97,30 +103,44 @@ body {
     float: right;
 }
 .btn {
-    border-radius: 2px;
-    border: 0;
-    background: #B9C300;
-    display: block;
-    font-weight: bold;
-    line-height: 50px;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    margin: 8px;
+    border: 2px solid #fff;
+	color: #fff;
+	background: none;
+    cursor: pointer;
+    line-height: 45px;
+	display: block;
+	margin: 8px;
+	text-transform: uppercase;
+	font-weight: bold;
+	outline: none;
+	transition: all 0.3s;
+}
+
+.btn:hover,
+.btn:active {
+	color: #333447;
+	background: #fff;
+}
+
+.addbtn {
+    font-size: 2.5em;
+    line-height: normal;
+    margin: 8px auto 8px auto;
+    width: 90%;
 }
 
 .listbtn {
     height: 50px;
     width: 85%;
+    margin: 8px auto 8px auto;
+    width: 90%;
 }
 
 table {
-    border: 2px solid #42b983;
-    border-radius: 3px;
-    background-color: #fff;
+    border: 1px solid #fff;
     border-spacing: 2px;
-    table-layout: auto;
     border-collapse: collapse;
+    table-layout: auto;
     width: 100%;
 }
 table th {
@@ -128,8 +148,12 @@ table th {
     cursor: pointer;
     font-weight: bold;
 }
+table thead {
+    border: 1px solid #fff;
+	color: #fff;
+}
+
 table td {
-    border-bottom: 1px solid rgba(138, 137, 137, 0.301);
     background: #FAFAFA;
     text-align: center;
 }

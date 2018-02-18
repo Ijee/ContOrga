@@ -22,7 +22,7 @@ body {
                          "sidebar main main main main main main main main main main main" 
                          "sidebar main main main main main main main main main main main" 
                          "sidebar main main main main main main main main main main main" 
-                         "sidebar footer footer footer footer footer footer footer footer footer footer footer";
+                         "addlistitem footer footer footer footer footer footer footer footer footer footer footer";
 }
 
 .grid-topbar {
@@ -53,13 +53,10 @@ body {
     grid-area: footer;
 }
 
-.listitem {
-    
+.addlistitem {
+    grid-area: addlistitem;
 }
 
-.addlistitem {
-    
-}
 /* second grid inside grid-main-info rgba(162, 179, 181, 0.95);*/
 .grid-main-info {
     grid-template-columns: repeat(2, 1fr);
