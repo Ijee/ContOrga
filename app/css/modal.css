@@ -1,0 +1,49 @@
+body {
+    background: #2f3136;
+    opacity: 0.8;
+}
+.modal{
+    -webkit-app-region: drag;
+}
+
+.modalitemtitle {
+    font-weight: bold;
+    padding-left: 8px;
+}
+
+.modalinput {
+    -webkit-app-region: no-drag;
+    background-color: #e8eeef;
+    border: 0;
+    border-radius: 4px;
+    color: #8a97a0;
+    padding: 8px;
+    margin: auto 5px 2px 5px;
+    font-weight: bolder;
+    width: 90%;
+}
+
+.modalinput input[type=text] {
+    -webkit-app-region: no-drag;
+    font-weight: bold
+}
+
+.modalsubmit {
+    -webkit-app-region: no-drag;
+    padding: 8px;
+    display: block;
+    margin: 14px auto 14px auto;
+    width: 90%;
+}
+
+
+.modalbtn {
+    -webkit-app-region: no-drag;
+    line-height: 25px;
+    float: right;
+    margin-right:5px;
+}
+
+textarea {
+    resize: none;
+}

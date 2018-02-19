@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>ContOrga</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/vue.js"></script>
@@ -16,7 +17,7 @@
 
     </div>
     <div class="grid-topbar">
-      <span v-if="seen">Now you see me</span>
+      <p v-if="seen">hey</p>
     </div>
     <div class="grid-sidebar">
       <div class="grid-siderbar-wrap">
@@ -28,12 +29,12 @@
       </div>
     </div>
     <div class="addlistitem">
-      <button type="button" class="btn addbtn">+</button>
+      <button v-on:click="showModal" type="button" class="btn addbtn">+</button>
     </div>
     <div class="grid-main">
       <div class="grid-main-wrap">
         <div class="grid-main-info">
-          <div class="grid-main-title">
+          <div class="grid-main-title title">
             Schiffsinformationen
           </div>
           <div class="grid-main-name">
@@ -47,7 +48,7 @@
           </div>
         </div>
         <div class="grid-main-content">
-          <div class="grid-main-title">
+          <div class="grid-main-title title">
             Containerliste
           </div>
           <table>
@@ -85,10 +86,11 @@
       </div>
     </div>
   </div>
+  <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
 </body>
-<script>
-  // You can also require other files to run in this process
-  require('./js/renderer.js')
-</script>
+
 
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ContOrga</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="modal">
+        <div class="modal-content">
+            <div class="modal-title title">
+                Neue Schiffstabelle erstellen:
+            </div>
+            <form class="modal-submission">
+                <div class="modal-name">
+                    <div class="modalitemtitle">
+                        <label for="shipname">Schiffsname</label>*
+                        <br>
+                    </div>
+                    <input type="text" class="modalinput" id="shipname" required>
+                </div>
+                <div class="modal-eta">
+                    <div class="modalitemtitle">
+                        <label for="shipeta">ETA</label>
+                        <br>
+                    </div>
+                    <input type="text" class="modalinput" id="shipeta">
+                </div>
+                <div class="modal-note">
+                    <div class="modalitemtitle">
+                        <label for="shipnote">Notiz</label>
+                        <br>
+                    </div>
+                    <input type="text" class="modalinput" id="shipnote">
+                </div>
+                <div class="modal-submit">
+                    <button type="button" v-on:click="cancelBtn" class="btn modalbtn">Abbrechen</button>
+                    <button type="submit" v-on:click="okBtn" class="btn modalbtn">O.K.</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+            // You can also require other files to run in this process
+            require('./js/modal.js')
+    </script>
+</body>
+
+
+</html>
