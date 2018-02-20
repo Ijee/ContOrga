@@ -23,21 +23,21 @@
                         <label for="shipname">Schiffsname</label>*
                         <br>
                     </div>
-                    <input type="text" class="modalinput" id="shipname" required>
+                    <input type="text" class="modalinput" id="shipname" v-model="modalName" required>
                 </div>
                 <div class="modal-eta">
                     <div class="modalitemtitle">
                         <label for="shipeta">ETA</label>
                         <br>
                     </div>
-                    <input type="text" class="modalinput" id="shipeta">
+                    <input type="text" class="modalinput" id="shipeta" v-model="modalETA">
                 </div>
                 <div class="modal-note">
                     <div class="modalitemtitle">
                         <label for="shipnote">Notiz</label>
                         <br>
                     </div>
-                    <input type="text" class="modalinput" id="shipnote">
+                    <input type="text" class="modalinput" id="shipnote" v-model="modalNote">
                 </div>
                 <div class="modal-submit">
                     <button type="button" v-on:click="cancelBtn" class="btn modalbtn">Abbrechen</button>

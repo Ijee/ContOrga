@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/vue.js"></script>
-  <script src="js/index.js"></script>
 </head>
 
 <body>
@@ -17,7 +16,7 @@
 
     </div>
     <div class="grid-topbar">
-      <p v-if="seen">hey</p>
+      <p v-if="seen">hi</p>
     </div>
     <div class="grid-sidebar">
       <div class="grid-siderbar-wrap">
@@ -38,13 +37,13 @@
             Schiffsinformationen
           </div>
           <div class="grid-main-name">
-            Name:
+            Name:<input v-model="name">
           </div>
           <div class="grid-main-eta">
-            ETA:
+            ETA:<input v-model="eta">
           </div>
           <div class="grid-main-note">
-            Notiz:
+            Notiz:<input v-model="note">
           </div>
         </div>
         <div class="grid-main-content">
@@ -86,11 +85,7 @@
       </div>
     </div>
   </div>
-  <script>
-      // You can also require other files to run in this process
-      require('./renderer.js')
-    </script>
+  <script src="js/index.js"></script>
+  <script src="./js/renderer.js"></script>
 </body>
-
-
 </html>

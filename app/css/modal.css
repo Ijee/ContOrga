@@ -2,7 +2,7 @@ body {
     background: #2f3136;
     opacity: 0.8;
 }
-.modal{
+#modal{
     -webkit-app-region: drag;
 }
 
