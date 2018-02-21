@@ -4,6 +4,8 @@ const BrowserWindow = electron.remote.BrowserWindow
 
 const ipc = electron.ipcRenderer
 
+shipList = new Array();
+
 var vueapp = new Vue({
     el: '#app',
     data: {
@@ -37,6 +39,12 @@ var vueapp = new Vue({
         return;
       },
       addTable(name, eta, note) {
+        //TODO get table data
+        new Ship(name, eta, note);
+        
+
+      },
+      removeTable(name) {
         return;
       },
       loadTable() {
@@ -61,4 +69,5 @@ var vueapp = new Vue({
     Vue.set(vueapp.$data, 'name', modalName);
     Vue.set(vueapp.$data, 'eta', modalETA);
     Vue.set(vueapp.$data, 'note', modalNote);
+    addTable(modalName, modalETA, modalNote);
   })

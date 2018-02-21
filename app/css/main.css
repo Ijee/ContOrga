@@ -15,6 +15,10 @@ body {
 
 .logo {
     background-color: #202225;
+    background-image: url('../asset/Contorga_logo_min.png');
+    background-repeat: no-repeat;
+    background-size: 100px 70px;
+    background-position: center;
 }
 
 .grid-sidebar {
@@ -87,11 +91,15 @@ body {
 }
 
 .grid-search input[type=text] {
+    padding: 8px;
+}
+
+input {
     background-color: #e8eeef;
     border: 0;
     border-radius: 4px;
-    color: #8a97a0;
-    padding: 8px;
+    color: #889096;
+    padding: 2px;
     margin: 5px;
     font-weight: bold;
 }
@@ -133,11 +141,32 @@ body {
     width: 90%;
 }
 
+.listitem-image {
+    border: 0;
+    background-image: url('../asset/shipentry.png');
+    background-repeat: no-repeat;
+    background-size: 36px 36px;
+    height: 35px;
+    width: 100%;
+    margin: 0;
+}
 .listbtn {
+    background-image: url('../asset/shipentry.png');
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    background-position: left;
     height: 50px;
     width: 85%;
-    margin: 8px auto 8px auto;
+    text-align: right;
+    margin: 0px auto 8px auto;
     width: 90%;
+}
+
+.listbtn:hover,
+.listbtn:active {
+    background-image: url('../asset/shipentry_dark.png');
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
 }
 
 table {

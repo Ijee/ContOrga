@@ -59,12 +59,12 @@ body {
 
 /* second grid inside grid-main-info rgba(162, 179, 181, 0.95);*/
 .grid-main-info {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows:  repeat(3, 1fr);
     display: grid;
-    grid-template-areas: "title title"
-                         "name eta"
-                         "note note";
+    grid-template-areas: "title title title title"
+                         "name name-input eta eta-input"
+                         "note note-input  note-input note-input";
 }
 
 .grid-main-title {
@@ -74,12 +74,22 @@ body {
 .grid-main-name {
     grid-area: name;
 }
+.grid-main-name-input {
+    grid-area: name-input;
+}
+
 .grid-main-eta {
     grid-area: eta;
+}
+.grid-main-eta-input {
+    grid-area: eta-input;
 }
 
 .grid-main-note {
     grid-area: note;
+}
+.grid-main-note-input {
+    grid-area: note-input;
 }
 
 /* modal.html grid */

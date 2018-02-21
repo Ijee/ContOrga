@@ -12,6 +12,9 @@ var modalapp = new Vue({
         modalNote: ''
     },
     methods: {
+        chooseDelete() {
+            return;
+        },
         cancelBtn() {
             var window = remote.getCurrentWindow();
             window.close();
@@ -20,10 +23,8 @@ var modalapp = new Vue({
             ipc.send('modal-information', this.$data.modalName, this.$data.modalETA, this.$data.modalNote);
             var window = remote.getCurrentWindow();
             window.close();
-        },
-        chooseDelete() {
-            return;
         }
     }
 })
+
 
