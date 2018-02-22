@@ -11,90 +11,89 @@
 </head>
 
 <body>
-  <div id="app" class="grid-container">
-    <div class="logo">
+  <div id="app">
+    <div class="grid-container">
+      <div class="logo">
 
-    </div>
-    <div class="grid-topbar">
-      <p v-if="seen">hi</p>
-    </div>
-    <div class="grid-sidebar">
-      <div class="grid-siderbar-wrap">
-        <div class="listitem-container">
-          <div class="listitem">
+      </div>
+      <div class="grid-topbar">
+
+      </div>
+      <div class="grid-sidebar">
+        <ul class="grid-siderbar-wrap">
+          <li class="listitem-container">
             <button type="button" class="btn listbtn listbtn-1">
-
-              <span>Item 1</span>
+              <span class="listitem-name">testtest</span>
             </button>
+          </li>
+        </ul>
+      </div>
+      <div class="addlistitem">
+        <button v-on:click="showModal" class="btn addbtn">+</button>
+      </div>
+      <div class="grid-main">
+        <div class="grid-main-wrap">
+          <div class="grid-main-info">
+            <div class="grid-main-title title">
+              Schiffsinformationen
+            </div>
+            <div class="main-name">
+              Name:
+            </div>
+            <input v-model="name" id="tablename" class="grid-main-name-input">
+            <div class="main-eta">
+              ETA:
+            </div>
+            <div class="main-filler"></div>
+            <input v-model="eta" id="tableeta" class="main-name-eta">
+            <div class="main-note">
+              Notiz:
+            </div>
+            <input v-model="schiffsnotiz" id="tablenote" class="name-note">
+          </div>
+          <div class="grid-main-content">
+            <div class="grid-main-title title">
+              Containerliste
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th v-for="column in columns" @click="sortBy(column)" :class="{ active: sortkey == column}">
+                    {{ column | capitalize }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="eintrag in tabellenEintrag">
+                  <td>{{ eintrag.ID }}</td>
+                  <td>{{ eintrag.SdgNr }}</td>
+                  <td>{{ eintrag.ContainerNr }}</td>
+                  <td>{{ eintrag.Loeschdatum }}</td>
+                  <td>{{ eintrag.Uhrzeit }}</td>
+                  <td>{{ eintrag.Status }}</td>
+                  <td>{{ eintrag.Abgabedatum }}</td>
+                  <td>{{ eintrag.Notiz }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </div>
-    <div class="addlistitem">
-      <button v-on:click="showModal" type="button" class="btn addbtn">+</button>
-    </div>
-    <div class="grid-main">
-      <div class="grid-main-wrap">
-        <div class="grid-main-info">
-          <div class="grid-main-title title">
-            Schiffsinformationen
-          </div>
-          <div class="grid-main-name">
-            <label for="tablename">Name:</label>
-            <input v-model="name" name="tablename" class="grid-main-name-input">
-          </div>
-          <div class="grid-main-eta">
-              <label for="tableta">eta:</label>
-            <input v-model="eta" name="tableeta" class="grid-main-name-eta">
-          </div>
-          <div class="grid-main-note">
-              <label for="tablenote">Notiz:</label>
-            <input v-model="note" name="tablenote" class="grid-main-name-note">
-          </div>
+      <div class="grid-footer">
+        <div class="grid-search">
+          <form>
+            <input v-model="search" type="text" name="search" placeholder="Suchen...">
+          </form>
         </div>
-        <div class="grid-main-content">
-          <div class="grid-main-title title">
-            Containerliste
-          </div>
-          <table>
-            <thead>
-              <th>ID</th>
-              <th>Sdg Nr.</th>
-              <th>Container Nr.</th>
-              <th>Löschdatum</th>
-              <th>Time</th>
-              <th>Status</th>
-              <th>Abgabedatum</th>
-              <th>Notiz</th>
-            </thead>
-            <tr>
-              <td>1</td>
-              <td>57000</td>
-              <td>LAPD 1234567</td>
-              <td>21.2.2018</td>
-              <td>20:32</td>
-              <td>n.g.</td>
-              <td>22.2.2018></td>
-              <td>dies ist eine Notiz</td>
-            </tr>
-          </table>
+        <div class="grid-exportall">
+          <button type="button" class="btn exportall">Alle Exportieren</button>
         </div>
-      </div>
-    </div>
-    <div class="grid-footer">
-      <div class="grid-search">
-        <form>
-          <input type="text" name="search" placeholder="Suchen...">
-        </form>
-      </div>
-      <div class="grid-exportall">
-        <button type="button" class="btn exportall">Alle Exportieren</button>
-      </div>
-      <div class="grid-exportlist">
-        <button type="button" class="btn exportlist">Liste Exportieren</button>
-      </div>
-      <div class="grid-removelist">
-        <button type="button" class="btn removelist">Liste entfernen</button>
+        <div class="grid-exportlist">
+          <button type="button" class="btn exportlist">Liste Exportieren</button>
+        </div>
+        <div class="grid-removelist">
+          <button type="button" class="btn removelist">Liste entfernen</button>
+        </div>
       </div>
     </div>
   </div>

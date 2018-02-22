@@ -59,36 +59,40 @@ body {
 
 /* second grid inside grid-main-info rgba(162, 179, 181, 0.95);*/
 .grid-main-info {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 2fr 10fr 1fr 2fr 10fr;
     grid-template-rows:  repeat(3, 1fr);
     display: grid;
-    grid-template-areas: "title title title title"
-                         "name name-input eta eta-input"
-                         "note note-input  note-input note-input";
+    grid-template-areas: "title title title title title"
+                         "name name-input filler eta eta-input"
+                         "note note-input note-input note-input note-input";
 }
 
 .grid-main-title {
     grid-area: title;
 }
 
-.grid-main-name {
+.main-name {
     grid-area: name;
 }
-.grid-main-name-input {
+.main-name-input {
     grid-area: name-input;
 }
 
-.grid-main-eta {
+.main-filler {
+    grid-area: filler;
+}
+
+.main-eta {
     grid-area: eta;
 }
-.grid-main-eta-input {
+.main-eta-input {
     grid-area: eta-input;
 }
 
-.grid-main-note {
+.main-note {
     grid-area: note;
 }
-.grid-main-note-input {
+.main-note-input {
     grid-area: note-input;
 }
 

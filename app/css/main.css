@@ -15,9 +15,9 @@ body {
 
 .logo {
     background-color: #202225;
-    background-image: url('../asset/Contorga_logo_min.png');
+    /*background-image: url('../asset/Contorga_logo_min_v2.png');*/
     background-repeat: no-repeat;
-    background-size: 100px 70px;
+    background-size: contain;
     background-position: center;
 }
 
@@ -29,6 +29,12 @@ body {
 
 .grid-sidebar-wrap {
     position: relative;
+}
+
+.listitem-name{
+    display: block;
+    padding-top: 12px;
+    text-align: center;
 }
 
 .addlistitem {
@@ -98,9 +104,9 @@ input {
     background-color: #e8eeef;
     border: 0;
     border-radius: 4px;
-    color: #889096;
+    color: #333447;
     padding: 2px;
-    margin: 5px;
+    margin: 4px;
     font-weight: bold;
 }
 .grid-removelist {
@@ -139,22 +145,13 @@ input {
     line-height: normal;
     margin: 8px auto 8px auto;
     width: 90%;
-}
+} 
 
-.listitem-image {
-    border: 0;
-    background-image: url('../asset/shipentry.png');
-    background-repeat: no-repeat;
-    background-size: 36px 36px;
-    height: 35px;
-    width: 100%;
-    margin: 0;
-}
 .listbtn {
     background-image: url('../asset/shipentry.png');
     background-repeat: no-repeat;
     background-size: 32px 32px;
-    background-position: left;
+    background-position: top;
     height: 50px;
     width: 85%;
     text-align: right;
@@ -201,3 +198,37 @@ tr:nth-child(even) td {
 tr:nth-child(odd) td {
     background: rgb(136, 143, 155); 
 }  
+
+th.active .arrow {
+    opacity: 1;
+}
+  
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+ul li {
+     
+}
+  
+.arrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    opacity: 0.66;
+}
+  
+.arrow.asc {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #fff;
+}
+  
+.arrow.dsc {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #fff;
+}

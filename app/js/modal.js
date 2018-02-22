@@ -12,14 +12,14 @@ var modalapp = new Vue({
         modalNote: ''
     },
     methods: {
-        chooseDelete() {
+        chooseDelete: function() {
             return;
         },
-        cancelBtn() {
+        cancelBtn: function() {
             var window = remote.getCurrentWindow();
             window.close();
         },
-        okBtn() {
+        okBtn: function() {
             ipc.send('modal-information', this.$data.modalName, this.$data.modalETA, this.$data.modalNote);
             var window = remote.getCurrentWindow();
             window.close();
