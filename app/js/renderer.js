@@ -156,10 +156,24 @@ var vueapp = new Vue({
       return;
     },
     addRow: function() {
-      return;
+      if(this.init.sdgnr === "") {
+        return;
+      }
+      this.init = {
+        ID: Object.keys(this.tabellenEintrag).length + 1,
+        SdgNr: this.init.sdgnr,
+        ContainerNr: this.init.containernr,
+        Loeschdatum: this.init.loeschdatum,
+        Uhrzeit: this.init.uhrzeit,
+        Status: this.init.status,
+        Abgabedatum: this.init.abgabedatum,
+        Notiz: this.init.notiz
+      };
+      this.tabellenEintrag.push(this.init);
+      this.init = {};
     },
-    deleteRow: function() {
-      return;
+    deleteRow: function(index) {
+      this.tabellenEintrag.splice(index, 1);
     },
     readFile: function () {
       return;

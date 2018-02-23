@@ -79,7 +79,7 @@
                   <td>{{ eintrag.Abgabedatum }}</td>
                   <td>{{ eintrag.Notiz }}</td>
                   <td>
-                      <button v-on:click="deleteRow(column)" class="btn">x</button>
+                      <button v-on:click="deleteRow(eintrag)" class="btn tablebtn"></button>
                   </td>
                 </tr>
                 <tr>
@@ -113,7 +113,7 @@
                   <td>
                     <input v-model="init.notiz">
                   </td>
-                  <td><button v-on:click="addRow" class="btn">+</button></td>
+                  <td><button v-on:click="addRow" class="btn tablebtn">+</button></td>
                 </tr>
               </tbody>
             </table>
@@ -127,13 +127,13 @@
           </form>
         </div>
         <div class="grid-exportall">
-          <button type="button" class="btn exportall">Alle Exportieren</button>
+          <button type="button" class="btn funcbtn">Alle Exportieren</button>
         </div>
         <div class="grid-exportlist">
-          <button type="button" class="btn exportlist">Liste Exportieren</button>
+          <button type="button" class="btn funcbtn">Liste Exportieren</button>
         </div>
         <div class="grid-removelist">
-          <button type="button" class="btn removelist">Liste entfernen</button>
+          <button type="button" class="btn funcbtn">Liste entfernen</button>
         </div>
       </div>
     </div>

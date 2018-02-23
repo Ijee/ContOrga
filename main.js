@@ -19,8 +19,10 @@ function createWindow () {
     width: 950, 
     height: 600,
     minWidth: 950,
-    minHeight: 500
+    minHeight: 500,
+    backgroundColor: '#202225'
   })
+  
   mainWindow.setMenu(null);
 
   // and load the index.html of the app.
@@ -29,9 +31,13 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+    })
+  
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
