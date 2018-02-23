@@ -20,7 +20,8 @@ function createWindow () {
     height: 600,
     minWidth: 950,
     minHeight: 500,
-    backgroundColor: '#202225'
+    backgroundColor: '#202225',
+    show: false
   })
   
   mainWindow.setMenu(null);
@@ -31,13 +32,14 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-  mainWindow.once('ready-to-show', () => {
-    mainWindow.show()
-    })
+  mainWindow.on('ready-to-show', function() { 
+    mainWindow.show(); 
+    mainWindow.focus(); 
+  });
   
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

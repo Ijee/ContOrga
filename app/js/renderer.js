@@ -146,13 +146,13 @@ var vueapp = new Vue({
       //TODO get table data
       new Ship(name, eta, note);
     },
-    removeTable: function (name) {
+    removeTable: function (index) {
       return;
     },
-    loadTable: function () {
+    loadTable: function (index) {
       return;
     },
-    saveTable: function () {
+    saveTable: function (index) {
       return;
     },
     addRow: function() {
@@ -172,8 +172,15 @@ var vueapp = new Vue({
       this.tabellenEintrag.push(this.init);
       this.init = {};
     },
-    deleteRow: function(index) {
-      this.tabellenEintrag.splice(index, 1);
+    deleteRow: function(eintrag) {
+      this.tabellenEintrag.splice(eintrag.ID -1, 1);
+      this.updateRowID();
+    },
+    updateRowID: function() {
+        for(i=1; i <= Object.keys(this.tabellenEintrag).length; i++) {
+          this.tabellenEintrag[i-1].ID = i;
+          //Vue.set(vueapp.$data, 'tabellenEintrag.ID', i);
+        }
     },
     readFile: function () {
       return;

@@ -61,9 +61,10 @@
                   <th v-for="column in columns"
                   @click="sortBy(column)" 
                   :class="{ active: sortKey == column }">
+                  {{ column | capitalize }}
                     <div class="arrow"
                     :class="sortOrders[column]  > 0 ? 'asc' : 'dsc'">
-                        {{ column | capitalize }}
+                        
                     </div>
                   </th>
                 </tr>
@@ -71,15 +72,21 @@
               <tbody>
                 <tr v-for="eintrag in tabellenEintrag">
                   <td>{{ eintrag.ID }}</td>
-                  <td>{{ eintrag.SdgNr }}</td>
-                  <td>{{ eintrag.ContainerNr }}</td>
-                  <td>{{ eintrag.Loeschdatum }}</td>
-                  <td>{{ eintrag.Uhrzeit }}</td>
-                  <td>{{ eintrag.Status }}</td>
-                  <td>{{ eintrag.Abgabedatum }}</td>
-                  <td>{{ eintrag.Notiz }}</td>
+                  <td><input v-model="eintrag.SdgNr" class="tableinput"></td>
+                  <td><input v-model="eintrag.ContainerNr" class="tableinput"></td>
+                  <td><input v-model="eintrag.Loeschdatum" class="tableinput"> </td>
+                  <td><input v-model="eintrag.Uhrzeit" class="tableinput"></td>
+                  <td><select v-model="eintrag.Status" class="tableselect">
+                      <option>n.g.</option>
+                      <option>i.V.</option>
+                      <option>✅</option>
+                      <option>leer</option>
+                    </select>
+                  </td>
+                  <td><input v-model="eintrag.Abgabedatum" class="tableinput"></td>
+                  <td><input v-model="eintrag.Notiz" class="tableinput"></td>
                   <td>
-                      <button v-on:click="deleteRow(eintrag)" class="btn tablebtn"></button>
+                      <button v-on:click="deleteRow(eintrag)" class="tablebtn"></button>
                   </td>
                 </tr>
                 <tr>
@@ -113,7 +120,7 @@
                   <td>
                     <input v-model="init.notiz">
                   </td>
-                  <td><button v-on:click="addRow" class="btn tablebtn">+</button></td>
+                  <td><button v-on:click="addRow" class="btn ">+</button></td>
                 </tr>
               </tbody>
             </table>
