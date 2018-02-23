@@ -12,50 +12,106 @@ var vueapp = new Vue({
     name: '',
     eta: '',
     schiffsnotiz: '',
-    
-    sortkey: 'ID',
+
+    sortKey: 'ID',
+    sortOrders: [],
     reverse: false,
     search: '',
 
+    init: {},
 
     schiffsListe: [
       {
-     
+        schiffID: '1',
+        schiffsname: 'C-3PO'
+      },
+      {
+        schiffID: '2',
+        schiffsname: 'Buzz'
+      },
+      {
+        schiffID: '2',
+        schiffsname: 'Buzz'
+      },
+      {
+        schiffID: '2',
+        schiffsname: 'Buzz'
+      },
+      {
+        schiffID: '2',
+        schiffsname: 'Buzz'
+      },
+      {
+        schiffID: '2',
+        schiffsname: 'Buzz'
+      },
+      {
+        schiffID: '3',
+        schiffsname: 'Droidekaaaa'
+      },
+      {
+        schiffID: '4',
+        schiffsname: 'R2-D2'
+      },
+      {
+        schiffID: '5',
+        schiffsname: 'Buzz'
+      },
+      {
+        schiffID: '6',
+        schiffsname: 'Droidekaaaa'
       }
     ],
-      columns: ['ID',
-        'Sdg Nr',
-        'Container Nr',
-        'Löschdatum',
-        'Uhrzeit',
-        'Status',
-        'Abgabedatum',
-        'Notiz'],
-      tabellenEintrag: [
-        {
-          ID: '1',
-          SdgNr: '57000',
-          ContainerNr: 'LAPD 1234567',
-          Loeschdatum: '21.2.2018',
-          Uhrzeit: '20:32',
-          Status: 'n.g.',
-          Abgabedatum: '22.2.2018',
-          Notiz: 'notiz test'
-        },
-        {
-          id: '2',
-          sdgnr: '57001',
-          containernr: 'LAPD 3456789',
-          loeschdatum: '24.2.2018',
-          uhrzeit: '14:23',
-          status: 'n.g.',
-          abgabedatum: '26.2.2018',
-          notiz: 'alles supi'
-        }],
+    columns: ['ID',
+      'Sdg Nr',
+      'Container Nr',
+      'Löschdatum',
+      'Uhrzeit',
+      'Status',
+      'Abgabedatum',
+      'Notiz',
+      'Aktion'],
+    tabellenEintrag: [
+      {
+        ID: '1',
+        SdgNr: '57000',
+        ContainerNr: 'LAPD 1234567',
+        Loeschdatum: '21.2.2018',
+        Uhrzeit: '20:32',
+        Status: 'n.g.',
+        Abgabedatum: '22.2.2018',
+        Notiz: 'notiz test'
+      },
+      {
+        ID: '2',
+        SdgNr: '57001',
+        ContainerNr: 'LAPD 3456789',
+        Loeschdatum: '24.2.2018',
+        Uhrzeit: '14:23',
+        Status: 'n.g.',
+        Abgabedatum: '26.2.2018',
+        Notiz: 'alles supi'
+      }]
+  },
+  computed: {
+    rowLength: function() {
+      return Object.keys(this.tabellenEintrag).length + 1;
+    }
+  },
+  created: function() {
+    this.columns.forEach(element => {
+      this.sortOrders[element] = 1;
+    });
   },
   filters: {
     capitalize: function (str) {
-      return str.charAt(0).toUpperCase() + str.slice(1)
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    },
+    first7: function (str) {
+      if (str.length > 9) {
+        return str.substring(0, 8) + '...';
+      } else
+      return str;
     }
   },
   methods: {
@@ -99,6 +155,12 @@ var vueapp = new Vue({
     saveTable: function () {
       return;
     },
+    addRow: function() {
+      return;
+    },
+    deleteRow: function() {
+      return;
+    },
     readFile: function () {
       return;
     },
@@ -115,5 +177,6 @@ ipc.on('ship-information', function (event, modalName, modalETA, modalNote) {
   Vue.set(vueapp.$data, 'name', modalName);
   Vue.set(vueapp.$data, 'eta', modalETA);
   Vue.set(vueapp.$data, 'schiffsnotiz', modalNote);
+
   addTable(modalName, modalETA, modalNote);
 })

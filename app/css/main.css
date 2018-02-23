@@ -2,6 +2,8 @@ body {
     font-family: Lato,Helvetica,sans-serif;
     color: #fff;
     line-height: 1.5;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .sidebar-add {
@@ -15,7 +17,7 @@ body {
 
 .logo {
     background-color: #202225;
-    /*background-image: url('../asset/Contorga_logo_min_v2.png');*/
+    background-image: url('../asset/Contorga_logo_min_v2.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -28,13 +30,14 @@ body {
 }
 
 .grid-sidebar-wrap {
-    position: relative;
+    height: 100%;
 }
 
 .listitem-name{
     display: block;
     padding-top: 12px;
     text-align: center;
+    font-size: x-small;
 }
 
 .addlistitem {
@@ -46,13 +49,15 @@ body {
 .grid-main {
     background: #2F3136;
     position: relative;
-    display: inline-block;
+    padding-top: 14px;
+    height: 100%;
+    
 }
 .grid-main-wrap {
     background: #484B51;
     padding: 8px;
-    display: block;
-    margin: 14px auto 14px auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 90%;
     border: 1px rgba(0, 0, 0, 0);
     border-radius: 0.3em 0.3em 0 0;
@@ -63,6 +68,10 @@ body {
     text-transform: capitalize;
     font-weight: bold;
     margin: 5px;
+}
+
+.grid-main-content tbody {
+    overflow: auto;
 }
 
 .title {
@@ -103,7 +112,6 @@ body {
 input {
     background-color: #e8eeef;
     border: 0;
-    border-radius: 4px;
     color: #333447;
     padding: 2px;
     margin: 4px;
@@ -177,6 +185,7 @@ table th {
     background-color: #484B51;
     cursor: pointer;
     font-weight: bold;
+    text-align: center;
 }
 table thead {
     border: 1px solid #fff;
@@ -202,32 +211,47 @@ tr:nth-child(odd) td {
 th.active .arrow {
     opacity: 1;
 }
+td input {
+    width: 90%;
+}
   
 ul {
     list-style-type: none;
+    overflow: hidden; 
+    padding-right: 17px;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
     padding: 0;
+    margin: 0;
+}
+
+ul::-webkit-scrollbar {
+    display: none;
 }
   
 ul li {
-     
+    
 }
   
 .arrow {
+    float: left;
+}
+.arrow::after {
     display: inline-block;
     vertical-align: middle;
+    content: '';
     width: 0;
     height: 0;
-    margin-left: 5px;
     opacity: 0.66;
 }
   
-.arrow.asc {
+.arrow.asc::after {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 4px solid #fff;
 }
   
-.arrow.dsc {
+.arrow.dsc::after {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 4px solid #fff;

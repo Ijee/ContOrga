@@ -20,10 +20,10 @@
 
       </div>
       <div class="grid-sidebar">
-        <ul class="grid-siderbar-wrap">
-          <li class="listitem-container">
-            <button type="button" class="btn listbtn listbtn-1">
-              <span class="listitem-name">testtest</span>
+        <ul class="grid-sidebar-wrap">
+          <li v-for="schiff in schiffsListe" class="listitem-container">
+            <button type="button" class="btn listbtn" v-bind:class="schiff.schiffID">
+              <span class="listitem-name">{{ schiff.schiffsname | first7 }}</span>
             </button>
           </li>
         </ul>
@@ -58,8 +58,13 @@
             <table>
               <thead>
                 <tr>
-                  <th v-for="column in columns" @click="sortBy(column)" :class="{ active: sortkey == column}">
-                    {{ column | capitalize }}
+                  <th v-for="column in columns"
+                  @click="sortBy(column)" 
+                  :class="{ active: sortKey == column }">
+                    <div class="arrow"
+                    :class="sortOrders[column]  > 0 ? 'asc' : 'dsc'">
+                        {{ column | capitalize }}
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -73,6 +78,42 @@
                   <td>{{ eintrag.Status }}</td>
                   <td>{{ eintrag.Abgabedatum }}</td>
                   <td>{{ eintrag.Notiz }}</td>
+                  <td>
+                      <button v-on:click="deleteRow(column)" class="btn">x</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {{ rowLength }}
+                  </td>
+                  <td>
+                    <input v-model="init.sdgnr">
+                  </td>
+                  <td>
+                    <input v-model="init.containernr">
+                  </td>
+                  <td>
+                    <input v-model="init.loeschdatum">
+                  </td>
+                  <td>
+                    <input v-model="init.uhrzeit">
+                  </td>
+                  <td>
+                    <select v-model="init.status">
+
+                      <option>n.g.</option>
+                      <option>i.V.</option>
+                      <option>✅</option>
+                      <option>leer</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input v-model="init.abgabedatum">
+                  </td>
+                  <td>
+                    <input v-model="init.notiz">
+                  </td>
+                  <td><button v-on:click="addRow" class="btn">+</button></td>
                 </tr>
               </tbody>
             </table>

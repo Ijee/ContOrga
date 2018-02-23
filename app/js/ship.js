@@ -6,5 +6,4 @@ class Ship {
         this.shipETA = shipETA;
         this.shipNote = shipNote;
     }
-    
 }
