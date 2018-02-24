@@ -1,11 +1,15 @@
 {
   "name": "ContOrga",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "main.js",
   "devDependencies": {
-    "electron": "^1.8.2"
+    "electron": "^1.8.2",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.15.1"
   },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build-css": "node-sass --include-path scss app/scss/main.scss app/css/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   }
 }

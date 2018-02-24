@@ -1,0 +1,1 @@
+The vendor directory is for third-party CSS / SCSS. 

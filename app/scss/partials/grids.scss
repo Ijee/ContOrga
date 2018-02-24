@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+.grid-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 100px repeat(11, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
+
+.grid-topbar {
+  grid-area: topbar; }
+
+.logo {
+  grid-area: logo; }
+
+.grid-sidebar {
+  grid-area: sidebar; }
+
+.grid-main {
+  grid-area: main; }
+
+.grid-main-info {
+  grid-area: info; }
+
+.grid-main-content {
+  grid-area: content; }
+
+.grid-footer {
+  grid-area: footer; }
+
+.addlistitem {
+  grid-area: addlistitem; }
+
+/* second grid inside grid-main-info rgba(162, 179, 181, 0.95);*/
+.grid-main-info {
+  grid-template-columns: 2fr 10fr 1fr 2fr 10fr;
+  grid-template-rows: repeat(3, 1fr);
+  display: grid;
+  grid-template-areas: "title title title title title" "name name-input filler eta eta-input" "note note-input note-input note-input note-input"; }
+
+.grid-main-title {
+  grid-area: title; }
+
+.main-name {
+  grid-area: name; }
+
+.main-name-input {
+  grid-area: name-input; }
+
+.main-filler {
+  grid-area: filler; }
+
+.main-eta {
+  grid-area: eta; }
+
+.main-eta-input {
+  grid-area: eta-input; }
+
+.main-note {
+  grid-area: note; }
+
+.main-note-input {
+  grid-area: note-input; }
+
+/* modal.html grid */
+.modal-submission {
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  display: grid;
+  grid-template-areas: "modal-name" "modal-eta" "modal-note" "modal-submit"; }
+
+.modal-title {
+  grid-area: modal-title; }
+
+.modal-name {
+  grid-area: modal-name; }
+
+.modal-eta {
+  grid-area: modal-eta; }
+
+.modal-note {
+  grid-area: modal-note; }
+
+.modal-submit {
+  grid-area: modal-submit; }

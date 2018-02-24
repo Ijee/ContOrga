@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <title>ContOrga</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/vue.js"></script>
 </head>
@@ -21,9 +20,9 @@
       </div>
       <div class="grid-sidebar">
         <ul class="grid-sidebar-wrap">
-          <li v-for="schiff in schiffsListe" class="listitem-container">
-            <button type="button" class="btn listbtn" v-bind:class="schiff.schiffID">
-              <span class="listitem-name">{{ schiff.schiffsname | first7 }}</span>
+          <li v-for="schiff in shipentries" class="listitem-container">
+            <button  class="btn listbtn" v-bind:class="schiff.schiffID">
+              <span class="listitem-name">{{ schiff | first7 }}</span>
             </button>
           </li>
         </ul>
@@ -134,13 +133,13 @@
           </form>
         </div>
         <div class="grid-exportall">
-          <button type="button" class="btn funcbtn">Alle Exportieren</button>
+          <button class="btn funcbtn">Alle Exportieren</button>
         </div>
         <div class="grid-exportlist">
-          <button type="button" class="btn funcbtn">Liste Exportieren</button>
+          <button class="btn funcbtn">Liste Exportieren</button>
         </div>
         <div class="grid-removelist">
-          <button type="button" class="btn funcbtn">Liste entfernen</button>
+          <button v-on:click="removeTable" class="btn funcbtn">Liste entfernen</button>
         </div>
       </div>
     </div>

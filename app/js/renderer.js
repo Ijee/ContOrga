@@ -4,14 +4,14 @@ const BrowserWindow = electron.remote.BrowserWindow
 
 const ipc = electron.ipcRenderer
 
-shipList = new Array();
-
 var vueapp = new Vue({
   el: '#app',
   data: {
     name: '',
     eta: '',
     schiffsnotiz: '',
+    shipentries: [],
+    currentList: '',
 
     sortKey: 'ID',
     sortOrders: [],
@@ -143,11 +143,10 @@ var vueapp = new Vue({
       return;
     },
     addTable: function (name, eta, note) {
-      //TODO get table data
-      new Ship(name, eta, note);
+      this.shipentries.push(new ship(name, eta, note, []));
     },
-    removeTable: function (index) {
-      return;
+    removeTable: function () {
+      this.shipentries.splice(this.currentList);
     },
     loadTable: function (index) {
       return;
@@ -179,7 +178,6 @@ var vueapp = new Vue({
     updateRowID: function() {
         for(i=1; i <= Object.keys(this.tabellenEintrag).length; i++) {
           this.tabellenEintrag[i-1].ID = i;
-          //Vue.set(vueapp.$data, 'tabellenEintrag.ID', i);
         }
     },
     readFile: function () {
@@ -194,10 +192,17 @@ var vueapp = new Vue({
   }
 })
 
+function ship(name, shipETA, shipNote, tableobj) {
+  this.name = name;
+  this.shipETA = shipETA;
+  this.shipNotiz = shipNote;
+  this.tabellenEintrag = tableobj;
+}
+
 ipc.on('ship-information', function (event, modalName, modalETA, modalNote) {
   Vue.set(vueapp.$data, 'name', modalName);
   Vue.set(vueapp.$data, 'eta', modalETA);
   Vue.set(vueapp.$data, 'schiffsnotiz', modalNote);
 
-  addTable(modalName, modalETA, modalNote);
+  vueapp.addTable(modalName, modalETA, modalNote);
 })
