@@ -9,21 +9,23 @@ const url = require('url')
 
 const ipc = require('electron').ipcMain
 
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 950, 
+    title: 'ContOrga',
+    width: 950,
     height: 600,
     minWidth: 950,
     minHeight: 500,
     backgroundColor: '#202225',
     show: false
   })
-  
+
   mainWindow.setMenu(null);
 
   // and load the index.html of the app.
@@ -32,11 +34,11 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-  mainWindow.on('ready-to-show', function() { 
-    mainWindow.show(); 
-    mainWindow.focus(); 
+  mainWindow.on('ready-to-show', function () {
+    mainWindow.show();
+    mainWindow.focus();
   });
-  
+
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
@@ -72,7 +74,7 @@ app.on('activate', function () {
   }
 })
 
-ipc.on('modal-information', function(event, modalName, modalETA, modalNote) {
+ipc.on('modal-information', function (event, modalName, modalETA, modalNote) {
   mainWindow.webContents.send('ship-information', modalName, modalETA, modalNote);
 })
 

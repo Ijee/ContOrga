@@ -90,7 +90,7 @@ body {
   grid-area: modal-submit; }
 
 body {
-  font-family: Lato,Helvetica,sans-serif;
+  font: caption;
   color: #fff;
   line-height: 1.5;
   overflow-x: hidden;
@@ -155,6 +155,7 @@ body {
   overflow: auto; }
 
 .title {
+  -webkit-user-select: none;
   background-color: #B9C300;
   color: #333447;
   text-transform: capitalize;
@@ -162,6 +163,9 @@ body {
   text-align: center;
   margin-bottom: 5px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24); }
+
+.main-section {
+  -webkit-user-select: none; }
 
 .grid-main-content {
   margin: 5px; }
@@ -198,6 +202,7 @@ input {
   float: right; }
 
 .btn {
+  -webkit-user-select: none;
   border: 2px solid #fff;
   color: #fff;
   background: none;
@@ -230,6 +235,13 @@ input {
   margin: 0px auto 8px auto;
   width: 90%; }
 
+.listbtn:hover,
+.listbtn:active {
+  background-image: url("../asset/shipentry_dark.png");
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: top; }
+
 .tablebtn {
   background-image: url("../asset/deleteButton.png");
   background-repeat: no-repeat;
@@ -240,11 +252,14 @@ input {
   display: block;
   overflow: auto;
   width: 85%;
-  height: 32px;
+  height: 20px;
   padding: 0;
   margin: 4px;
   font-weight: bolder;
   cursor: pointer; }
+
+.tableaddbtn {
+  margin: 4px auto 4px auto; }
 
 .tablebtn:focus {
   outline: none;
@@ -254,12 +269,6 @@ input {
   margin: 8px;
   line-height: 45px; }
 
-.listbtn:hover,
-.listbtn:active {
-  background-image: url("../asset/shipentry_dark.png");
-  background-repeat: no-repeat;
-  background-size: 32px 32px; }
-
 table {
   border: 1px solid #fff;
   border-spacing: 2px;
@@ -268,6 +277,7 @@ table {
   width: 100%; }
 
 table th {
+  -webkit-user-select: none;
   background-color: #484B51;
   cursor: pointer;
   font-weight: bold;
@@ -305,6 +315,9 @@ td input {
 .tableinput:focus {
   outline: none;
   border: 1px solid #fff; }
+
+.tableselect {
+  background-color: #e8eeef; }
 
 ul {
   list-style-type: none;

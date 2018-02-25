@@ -1,6 +1,7 @@
 {
   "name": "ContOrga",
   "version": "0.0.2",
+  "description": "A tool to track container around the world",
   "main": "main.js",
   "devDependencies": {
     "electron": "^1.8.2",
@@ -11,5 +12,15 @@
     "start": "electron .",
     "build-css": "node-sass --include-path scss app/scss/main.scss app/css/main.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ijee/ContOrga"
+  },
+  "author": {
+    "name": "Thorsten Schulz",
+    "email": "thorsten.schulz.ger@googlemail.com",
+    "url": "Ijee.site"
   }
+
 }

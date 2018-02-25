@@ -20,9 +20,9 @@
       </div>
       <div class="grid-sidebar">
         <ul class="grid-sidebar-wrap">
-          <li v-for="schiff in shipentries" class="listitem-container">
-            <button  class="btn listbtn" v-bind:class="schiff.schiffID">
-              <span class="listitem-name">{{ schiff | first7 }}</span>
+          <li v-for="(schiff, index) in shipentries" :key="index" class="listitem-container">
+            <button v-on:click="changeTable(index)" class="btn listbtn" v-bind:class="schiff.schiffID">
+              <span class="listitem-name">{{ schiff.name | first8 }}</span>
             </button>
           </li>
         </ul>
@@ -36,16 +36,16 @@
             <div class="grid-main-title title">
               Schiffsinformationen
             </div>
-            <div class="main-name">
+            <div class="main-section">
               Name:
             </div>
             <input v-model="name" id="tablename" class="grid-main-name-input">
-            <div class="main-eta">
+            <div class="main-section">
               ETA:
             </div>
             <div class="main-filler"></div>
             <input v-model="eta" id="tableeta" class="main-name-eta">
-            <div class="main-note">
+            <div class="main-section">
               Notiz:
             </div>
             <input v-model="schiffsnotiz" id="tablenote" class="name-note">
@@ -93,19 +93,19 @@
                     {{ rowLength }}
                   </td>
                   <td>
-                    <input v-model="init.sdgnr">
+                    <input v-model="init.sdgnr" :disabled="disabled">
                   </td>
                   <td>
-                    <input v-model="init.containernr">
+                    <input v-model="init.containernr" :disabled="disabled">
                   </td>
                   <td>
-                    <input v-model="init.loeschdatum">
+                    <input v-model="init.loeschdatum" :disabled="disabled">
                   </td>
                   <td>
-                    <input v-model="init.uhrzeit">
+                    <input v-model="init.uhrzeit" :disabled="disabled">
                   </td>
                   <td>
-                    <select v-model="init.status">
+                    <select v-model="init.status" :disabled="disabled">
 
                       <option>n.g.</option>
                       <option>i.V.</option>
@@ -114,12 +114,12 @@
                     </select>
                   </td>
                   <td>
-                    <input v-model="init.abgabedatum">
+                    <input v-model="init.abgabedatum" :disabled="disabled">
                   </td>
                   <td>
-                    <input v-model="init.notiz">
+                    <input v-model="init.notiz" :disabled="disabled">
                   </td>
-                  <td><button v-on:click="addRow" class="btn ">+</button></td>
+                  <td><button v-on:click="addRow" class="btn tableaddbtn" :disabled="disabled">+</button></td>
                 </tr>
               </tbody>
             </table>
