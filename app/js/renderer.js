@@ -41,7 +41,7 @@ var vueapp = new Vue({
       if(Object.keys(this.shipentries).length < 1) return true;
       return false;
     }
-  },
+  }, 
   created: function () {
     this.columns.forEach(element => {
       this.sortOrders[element] = 1;
@@ -78,6 +78,12 @@ var vueapp = new Vue({
       win.show();
       //win.webContents.openDevTools();
     },
+    addClass: function(index) {
+      ret = 'heading' + (index + 1);
+      if(this.sortKey == this.columns[index]) 
+      ret += ' active';
+      return ret;
+    },
     sortBy: function (sortKey) {
       this.reverse = (this.sortKey == sortKey) ? !this.reverse : false;
 
@@ -89,22 +95,19 @@ var vueapp = new Vue({
       this.eta = this.shipentries[index].shipETA;
       this.schiffsnotiz = this.shipentries[index].shipNotiz;
       this.tabellenEintrag = this.shipentries[index].tabellenEintrag;
+
+      this.currentList = index;
     },
     addTable: function (name, eta, note) {
       this.shipentries.push(new ship(name, eta, note, []));
-      this.inputdisable = false;
-      var xmlData = app.getPath('desktop');
-      this.path = path.join(xmlData + 'hello.txt');
-      fs.writeFile(this.path, 'Hello Node.js', (err) => {
-        if (err) throw err;
-        console.log(xmlData);
-      });
+      this.changeTable(Object.keys(this.shipentries).length -1);
+      
     },
     removeTable: function () {
       this.shipentries.splice(this.currentList);
     },
     loadTable: function (index) {
-      return;
+      
     },
     saveTable: function (index) {
       return;
@@ -123,7 +126,7 @@ var vueapp = new Vue({
         Abgabedatum: this.init.abgabedatum,
         Notiz: this.init.notiz
       };
-      this.tabellenEintrag.push(this.init);
+      this.shipentries[this.currentList].tabellenEintrag.push(this.init);
       this.init = {};
     },
     deleteRow: function (eintrag) {
@@ -139,7 +142,15 @@ var vueapp = new Vue({
       return;
     },
     exportList: function () {
+      var savepath = app.getPath('desktop');
+      this.path = path.join(savepath, 'hello.json');
+      
+      content = JSON.stringify(this.shipentries[this.currentList]);
 
+      fs.writeFile(this.path, content, (err) => {
+        if (err) throw err;
+        
+      });
     },
     exportAll: function () {
       return;

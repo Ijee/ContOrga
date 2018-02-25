@@ -39,90 +39,91 @@
             <div class="main-section">
               Name:
             </div>
-            <input v-model="name" id="tablename" class="grid-main-name-input">
+            <input v-model="name" id="tablename" class="grid-main-name-input" :disabled="disabled">
             <div class="main-section">
               ETA:
             </div>
             <div class="main-filler"></div>
-            <input v-model="eta" id="tableeta" class="main-name-eta">
+            <input v-model="eta" id="tableeta" class="main-name-eta" :disabled="disabled">
             <div class="main-section">
               Notiz:
             </div>
-            <input v-model="schiffsnotiz" id="tablenote" class="name-note">
+            <input v-model="schiffsnotiz" id="tablenote" class="name-note" :disabled="disabled">
           </div>
           <div class="grid-main-content">
-            <div class="grid-main-title title">
+            <div class="grid-main-content-title title">
               Containerliste
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th v-for="column in columns"
-                  @click="sortBy(column)" 
-                  :class="{ active: sortKey == column }">
+            <div class="table-wrap">
+              <div class="table-head">
+                <div v-for="(column, index) in columns" @click="sortBy(column)" :class="addClass(index)">
                   {{ column | capitalize }}
-                    <div class="arrow"
-                    :class="sortOrders[column]  > 0 ? 'asc' : 'dsc'">
-                        
-                    </div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="eintrag in tabellenEintrag">
-                  <td>{{ eintrag.ID }}</td>
-                  <td><input v-model="eintrag.SdgNr" class="tableinput"></td>
-                  <td><input v-model="eintrag.ContainerNr" class="tableinput"></td>
-                  <td><input v-model="eintrag.Loeschdatum" class="tableinput"> </td>
-                  <td><input v-model="eintrag.Uhrzeit" class="tableinput"></td>
-                  <td><select v-model="eintrag.Status" class="tableselect">
-                      <option>n.g.</option>
-                      <option>i.V.</option>
-                      <option>✅</option>
-                      <option>leer</option>
-                    </select>
-                  </td>
-                  <td><input v-model="eintrag.Abgabedatum" class="tableinput"></td>
-                  <td><input v-model="eintrag.Notiz" class="tableinput"></td>
-                  <td>
-                      <button v-on:click="deleteRow(eintrag)" class="tablebtn"></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    {{ rowLength }}
-                  </td>
-                  <td>
-                    <input v-model="init.sdgnr" :disabled="disabled">
-                  </td>
-                  <td>
-                    <input v-model="init.containernr" :disabled="disabled">
-                  </td>
-                  <td>
-                    <input v-model="init.loeschdatum" :disabled="disabled">
-                  </td>
-                  <td>
-                    <input v-model="init.uhrzeit" :disabled="disabled">
-                  </td>
-                  <td>
-                    <select v-model="init.status" :disabled="disabled">
+                  <div class="arrow" :class="sortOrders[column]  > 0 ? 'asc' : 'dsc'">
+                  </div>
+                </div>
+              </div>
 
-                      <option>n.g.</option>
-                      <option>i.V.</option>
-                      <option>✅</option>
-                      <option>leer</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input v-model="init.abgabedatum" :disabled="disabled">
-                  </td>
-                  <td>
-                    <input v-model="init.notiz" :disabled="disabled">
-                  </td>
-                  <td><button v-on:click="addRow" class="btn tableaddbtn" :disabled="disabled">+</button></td>
-                </tr>
-              </tbody>
-            </table>
+              <div class="table-content" v-for="eintrag in tabellenEintrag">
+                <div class="tableid cell">{{ eintrag.ID }}</div>
+                <div class="cell">
+                  <input v-model="eintrag.SdgNr" class="tableinput tablesdgnr">
+                </div>
+                <div class="cell">
+                  <input v-model="eintrag.ContainerNr" class="tableinput tablecontainernr">
+                </div>
+                <div class="cell">
+                  <input v-model="eintrag.Loeschdatum" class="tableinput tableloeschdatum">
+                </div>
+                <div class="cell">
+                  <input v-model="eintrag.Uhrzeit" class="tableinput tableuhrzeit">
+                </div>
+                <div>
+                  <select v-model="eintrag.Status" class="tableselect">
+                    <option>n.g.</option>
+                    <option>i.V.</option>
+                    <option>✅</option>
+                    <option>leer</option>
+                  </select>
+                </div>
+                <div class="cell">
+                  <input v-model="eintrag.Abgabedatum" class="tableinput tableabgabdedatum">
+                </div>
+                <div class="cell">
+                  <input v-model="eintrag.Notiz" class="tableinput tablenotiz">
+                </div>
+                <button v-on:click="deleteRow(eintrag)" class="tablebtn cell"></button>
+              </div>
+              <div class="table-add">
+                <div class="addrowlength">{{ rowLength }}</div>
+                <div class="addsdgnr">
+                  <input v-model="init.sdgnr" :disabled="disabled">
+                </div>
+                <div class="addcontainernr">
+                  <input v-model="init.containernr" :disabled="disabled">
+                </div>
+                <div class="addloeschdatum">
+                  <input v-model="init.loeschdatum" :disabled="disabled">
+                </div>
+                <div class="adduhrzeit">
+                  <input v-model="init.uhrzeit" :disabled="disabled">
+                </div>
+                <div>
+                  <select v-model="init.status" class="addtableselect" :disabled="disabled">
+                    <option>n.g.</option>
+                    <option>i.V.</option>
+                    <option>✅</option>
+                    <option>leer</option>
+                  </select>
+                </div>
+                <div class="addabgabedatum">
+                  <input v-model="init.abgabedatum" :disabled="disabled">
+                </div>
+                <div class="addnotiz">
+                  <input v-model="init.notiz" :disabled="disabled">
+                </div>
+                <button v-on:click="addRow" class="btn tableaddbtn cell" :disabled="disabled">+</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -136,7 +137,7 @@
           <button class="btn funcbtn">Alle Exportieren</button>
         </div>
         <div class="grid-exportlist">
-          <button class="btn funcbtn">Liste Exportieren</button>
+          <button v-on:click="exportList" class="btn funcbtn">Liste Exportieren</button>
         </div>
         <div class="grid-removelist">
           <button v-on:click="removeTable" class="btn funcbtn">Liste entfernen</button>

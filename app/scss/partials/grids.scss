@@ -21,9 +21,6 @@ body {
 .grid-sidebar {
   grid-area: sidebar; }
 
-.grid-main {
-  grid-area: main; }
-
 .grid-main-info {
   grid-area: info; }
 
@@ -36,12 +33,31 @@ body {
 .addlistitem {
   grid-area: addlistitem; }
 
-/* second grid inside grid-main-info rgba(162, 179, 181, 0.95);*/
+/* grid-main grid */
+.grid-main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 12px 1fr 12px;
+}
+
+.grid-main-wrap{
+  grid-area: wrap;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+
+/* second grid inside grid-main-info */
 .grid-main-info {
   grid-template-columns: 2fr 10fr 1fr 2fr 10fr;
   grid-template-rows: repeat(3, 1fr);
   display: grid;
-  grid-template-areas: "title title title title title" "name name-input filler eta eta-input" "note note-input note-input note-input note-input"; }
+  grid-template-areas: "title title title title title"
+                       "name name-input filler eta eta-input"
+                       "note note-input note-input note-input note-input"; }
 
 .grid-main-title {
   grid-area: title; }
@@ -66,6 +82,138 @@ body {
 
 .main-note-input {
   grid-area: note-input; }
+
+.grid-main-content {
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px 1fr;
+  grid-template-areas: "content-title"
+                       "table";
+}
+
+.grid-main-content-title {
+  grid-area: content-title;
+}
+
+
+
+/* */
+.table-content {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-areas: "tableid tablesdgnr tablecontainernr tableloeschdatum tableuhrzeit tableselect tableabgabdedatum tablenotiz tablebtn";
+}
+.tableid {
+  grid-area: tableid;
+}
+.tablesdgnr {
+  grid-area: tablesdgnr;
+}
+
+.tablecontainernr {
+  grid-area: tablecontainernr;
+}
+
+.tableloeschdatum {
+  grid-area: tableloeschdatum;
+}
+.tableuhrzeit {
+  grid-area: tableuhrzeit;
+}
+.tableselect {
+  grid-area: tableselect;
+}
+
+.tableabgabedatum {
+  grid-area: tableabgabedatum;
+}
+
+.tablenotiz {
+  grid-area: tablenotiz;
+}
+
+.tablebtn {
+  grid-area: tablebtn;
+}
+
+/* */
+.table-head {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-areas: "heading1 heading2 heading3 heading4 heading5 heading6 heading7 heading8 heading9";
+}
+
+.heading1{
+  grid-area: heading1;
+}
+.heading2{
+  grid-area: heading2;
+}
+.heading3{
+  grid-area: heading3;
+}
+.heading4{
+  grid-area: heading4;
+}
+.heading5{
+  grid-area: heading5;
+}
+.heading6{
+  grid-area: heading6;
+}
+.heading7{
+  grid-area: heading7;
+}
+.heading8{
+  grid-area: heading8;
+}
+.heading9{
+  grid-area: heading9;
+}
+
+/* */
+.table-add {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-areas: "addrowlength addsdgnr addcontainernr addloeschdatum adduhrzeit addtableselect addabgabedatum addnotiz tableaddbtn";
+}
+.addrowlength {
+  grid-area: addrowlength;
+}
+
+.addsdgnr {
+  grid-area: addsdgnr;
+}
+
+.addcontainernr {
+  grid-area: addcontainernr;
+}
+
+.addloeschdatum {
+  grid-area: addloeschdatum;
+}
+
+.adduhrzeit {
+  grid-area: adduhrzeit;
+}
+
+.addtableselect {
+  grid-area: addtableselect;
+}
+
+.addabgabedatum {
+  grid-area: addabgabedatum;
+}
+
+.addnotiz {
+  grid-area: addnotiz;
+}
+
+.tableaddbtn {
+  grid-area: tableaddbtn;
+}
 
 /* modal.html grid */
 .modal-submission {

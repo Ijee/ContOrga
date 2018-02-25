@@ -1,5 +1,3 @@
-
-
 body {
     font: caption;
     color: #fff;
@@ -50,17 +48,17 @@ body {
 
 .grid-main {
     background: #2F3136;
-    position: relative;
-    padding-top: 14px;
+    
     height: 100%;
     
 }
 .grid-main-wrap {
     background: $footer-main-wrap-color;
-    padding: 8px;
     margin-left: auto;
     margin-right: auto;
+    height: 100%;
     width: 90%;
+    overflow-x: hidden;
     border: 1px rgba(0, 0, 0, 0);
     border-radius: 0.3em 0.3em 0 0;
     box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.5);
@@ -72,8 +70,11 @@ body {
     margin: 5px;
 }
 
-.grid-main-content tbody {
-    overflow: auto;
+.grid-main-content {
+    
+}
+.main-table {
+    width:100%;
 }
 
 .title {
@@ -116,14 +117,6 @@ body {
     padding: 8px;
 }
 
-input {
-    background-color: $input-color;
-    border: 0;
-    color: #333447;
-    padding: 2px;
-    margin: 4px;
-    font-weight: bold;
-}
 .grid-removelist {
     float: right;
 }
@@ -230,6 +223,8 @@ table thead {
 	color: #fff;
 }
 
+
+
 table td {
     background: #FAFAFA;
     text-align: center;
@@ -249,10 +244,32 @@ tr:nth-child(odd) td {
 th.active .arrow {
     opacity: 1;
 }
-td input {
-    width: 90%;
+
+.table-wrap {
+    overflow: hidden; 
+    padding-right: 17px;
+    overflow-y:scroll;
+    height: 100%;
 }
 
+select {
+    background-color: $input-color;
+    width: 90%;
+    border: 0;
+    color: #333447;
+    padding: 2px;
+    margin: 4px;
+    font-weight: bold;
+}
+input {
+    background-color: $input-color;
+    width: 90%;
+    border: 0;
+    color: #333447;
+    padding: 2px;
+    margin: 4px;
+    font-weight: bold;
+}
 .tableinput {
     color: #fff;
     border: none;
@@ -279,10 +296,6 @@ ul {
 }
 ul::-webkit-scrollbar {
     display: none;
-}
-  
-ul li {
-    
 }
   
 .arrow {
@@ -312,3 +325,6 @@ ul li {
     border-right: 4px solid transparent;
     border-top: 4px solid #fff;
 }
+
+
+
