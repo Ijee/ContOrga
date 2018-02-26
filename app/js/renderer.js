@@ -23,6 +23,7 @@ var vueapp = new Vue({
     search: '',
 
     init: {},
+    searchList: {},
     currentHeight: '',
 
 
@@ -50,6 +51,7 @@ var vueapp = new Vue({
     this.columns.forEach(element => {
       this.sortOrders[element] = 1;
     });
+
   },
   filters: {
     capitalize: function (str) {
@@ -103,7 +105,6 @@ var vueapp = new Vue({
       this.sortKey = sortKey;
     },
     changeTable: function (index) {
-      console.log(index);
       this.name = this.shipentries[index].name;
       this.eta = this.shipentries[index].shipETA;
       this.schiffsnotiz = this.shipentries[index].shipNotiz;
@@ -189,9 +190,11 @@ function ship(name, shipETA, shipNote, tableobj) {
   this.tabellenEintrag = tableobj;
 }
 
+/* 
+  - 183 is the pixel count based on the other content in maincontent
+*/
 function setHeight() {
-  vueapp.currentHeight = maincontent.clientHeight - 171 + 'px';
-  console.log(vueapp.currentHeight);
+  vueapp.currentHeight = maincontent.clientHeight - 183 + 'px';
 }
 
 ipc.on('ship-information', function (event, modalName, modalETA, modalNote) {
