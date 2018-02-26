@@ -1,3 +1,7 @@
 @mixin not-selectable() {
     -webkit-user-select:none;
 }
+
+@mixin grid-table-columns() {
+    grid-template-columns: 30px repeat(7, 1fr) 54px;
+}

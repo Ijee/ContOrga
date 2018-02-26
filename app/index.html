@@ -9,7 +9,7 @@
   <script src="js/vue.js"></script>
 </head>
 
-<body>
+<body onresize="setHeight()">
   <div id="app">
     <div class="grid-container">
       <div class="logo">
@@ -30,7 +30,7 @@
       <div class="addlistitem">
         <button v-on:click="showModal" class="btn addbtn">+</button>
       </div>
-      <div class="grid-main">
+      <div class="grid-main" id="maincontent">
         <div class="grid-main-wrap">
           <div class="grid-main-info">
             <div class="grid-main-title title">
@@ -50,7 +50,7 @@
             </div>
             <input v-model="schiffsnotiz" id="tablenote" class="name-note" :disabled="disabled">
           </div>
-          <div class="grid-main-content" ref="maincontent">
+          <div class="grid-main-content">
             <div class="grid-main-content-title title">
               Containerliste
             </div>
@@ -58,17 +58,17 @@
               <div class="table-head">
                 <div v-for="(column, index) in columns" @click="sortBy(column)" :class="addClass(index)">
                   {{ column | capitalize }}
-                  <div class="arrow" :class="sortOrders[column]  > 0 ? 'asc' : 'dsc'">
+                  <div class="arrow" :class="addArrow(column, index)">
                   </div>
                 </div>
               </div>
-              <div class="test">
+              <div class="table-list" id="tablelist" v-bind:style="{ height: currentHeight}">
                 <div class="table-content" v-for="eintrag in tabellenEintrag">
                   <div class="tableid cell">{{ eintrag.ID }}</div>
                   <div class="cell">
                     <input v-model="eintrag.SdgNr" class="tableinput tablesdgnr">
-                    <div class="cell">
                   </div>
+                  <div class="cell">
                     <input v-model="eintrag.ContainerNr" class="tableinput tablecontainernr">
                   </div>
                   <div class="cell">
@@ -93,7 +93,7 @@
                   </div>
                   <button v-on:click="deleteRow(eintrag)" class="tablebtn cell"></button>
                 </div>
-                <div class="table-add">
+                <div class="table-add" id="tableadd" v-bind:class="rowLength % 2 == 0 ? 'table-even' : 'table-odd'">
                   <div class="addrowlength">{{ rowLength }}</div>
                   <div class="addsdgnr">
                     <input v-model="init.sdgnr" :disabled="disabled">

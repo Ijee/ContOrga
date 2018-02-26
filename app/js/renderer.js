@@ -23,6 +23,8 @@ var vueapp = new Vue({
     search: '',
 
     init: {},
+    currentHeight: '',
+
 
     columns: ['ID',
       'Sdg Nr',
@@ -42,10 +44,6 @@ var vueapp = new Vue({
     disabled: function() {
       if(Object.keys(this.shipentries).length < 1) return true;
       return false;
-    },
-    getHeight: function() {
-      var heightString = this.$refs.maincontent.clientHeight + 'px';
-      return heightString;
     }
   }, 
   created: function () {
@@ -95,6 +93,9 @@ var vueapp = new Vue({
       if(this.sortKey == this.columns[index]) 
       ret += ' active';
       return ret;
+    },
+    addArrow: function(column, index) {
+      if(index < 8) return this.sortOrders[column]  > 0 ? 'asc' : 'dsc';
     },
     sortBy: function (sortKey) {
       this.reverse = (this.sortKey == sortKey) ? !this.reverse : false;
@@ -146,6 +147,10 @@ var vueapp = new Vue({
       };
       this.shipentries[this.currentList].tabellenEintrag.push(this.init);
       this.init = {};
+      //scroll to bottom
+      setTimeout(() => {
+        tablelist.scrollTop = tablelist.scrollHeight; 
+      }, 1);
     },
     deleteRow: function (eintrag) {
       this.tabellenEintrag.splice(eintrag.ID - 1, 1);
@@ -182,6 +187,11 @@ function ship(name, shipETA, shipNote, tableobj) {
   this.shipETA = shipETA;
   this.shipNotiz = shipNote;
   this.tabellenEintrag = tableobj;
+}
+
+function setHeight() {
+  vueapp.currentHeight = maincontent.clientHeight - 171 + 'px';
+  console.log(vueapp.currentHeight);
 }
 
 ipc.on('ship-information', function (event, modalName, modalETA, modalNote) {

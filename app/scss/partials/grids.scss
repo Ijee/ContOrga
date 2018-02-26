@@ -37,7 +37,6 @@ body {
 .grid-main {
     grid-area: main;
     display: grid;
-    grid-template-columns: 1fr;
     grid-template-rows: 12px 1fr 12px;
 }
 
@@ -45,8 +44,6 @@ body {
   grid-area: wrap;
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 1;
 }
 
 
@@ -98,9 +95,9 @@ body {
 
 /* */
 .table-content {
+  @include grid-table-columns;
   display: grid;
   justify-content: space-around;
-  grid-template-columns: repeat(9, 1fr);
   grid-template-areas: "tableid tablesdgnr tablecontainernr tableloeschdatum tableuhrzeit tableselect tableabgabdedatum tablenotiz tablebtn";
 }
 .tableid {
@@ -138,9 +135,9 @@ body {
 
 /* */
 .table-head {
+  @include grid-table-columns;
   display: grid;
   justify-content: space-around;
-  grid-template-columns: repeat(9, 1fr);
   grid-template-areas: "heading1 heading2 heading3 heading4 heading5 heading6 heading7 heading8 heading9";
 }
 
@@ -174,9 +171,9 @@ body {
 
 /* */
 .table-add {
+  @include grid-table-columns;
   display: grid;
   justify-content: space-around;
-  grid-template-columns: repeat(9, 1fr);
   grid-template-areas: "addrowlength addsdgnr addcontainernr addloeschdatum adduhrzeit addtableselect addabgabedatum addnotiz tableaddbtn";
 }
 .addrowlength {

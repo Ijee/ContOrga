@@ -49,16 +49,12 @@ body {
 .grid-main {
     background: #2F3136;
     
-    height: 100%;
-    
 }
 .grid-main-wrap {
     background: $footer-main-wrap-color;
     margin-left: auto;
     margin-right: auto;
-    height: 100%;
-    width: 90%;
-    overflow-x: hidden;
+    width: 95%;
     border: 1px rgba(0, 0, 0, 0);
     border-radius: 0.3em 0.3em 0 0;
     box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.5);
@@ -71,10 +67,7 @@ body {
 }
 
 .grid-main-content {
-    height: 100%;
-}
-.main-table {
-    width:100%;
+    
 }
 
 .title {
@@ -206,10 +199,6 @@ body {
 
 .table-wrap {
     border: 1px solid #fff;
-    padding-right: 17px;
-    overflow-y: hidden;
-    width: 100%;
-    position: relative;
 }
 
 .table-head {
@@ -223,11 +212,20 @@ body {
     text-align: center;
 }
 
-.table-content:nth-child(even) {
+.tableid{
+    font-weight: bold;
+}
+
+.addrowlength {
+    font-weight: bold;
+    text-align: center
+}
+
+.table-content:nth-child(even), .table-even {
     background: #666b74; 
     text-align: center;
 }
-.table-content:nth-child(odd) {
+.table-content:nth-child(odd), .table-odd {
     background: rgb(136, 143, 155); 
     text-align: center;
 }
@@ -240,14 +238,6 @@ table {
     table-layout: auto;
     width: 100%;
 }
-table th {
-    
-}
-table thead {
-    
-}
-
-
 
 th.active .arrow {
     opacity: 1;
@@ -284,6 +274,18 @@ input {
 
 .tableselect {
     background-color: $input-color;
+}
+
+.table-list {
+    overflow: hidden; 
+    padding-right: 17px;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+    margin: 0;
+}
+.table-list::-webkit-scrollbar {
+    display: none;
 }
   
 ul {

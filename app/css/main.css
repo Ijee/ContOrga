@@ -37,15 +37,12 @@ body {
 .grid-main {
   grid-area: main;
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-rows: 12px 1fr 12px; }
 
 .grid-main-wrap {
   grid-area: wrap;
   grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 1; }
+  grid-row-end: 3; }
 
 /* second grid inside grid-main-info */
 .grid-main-info {
@@ -88,9 +85,9 @@ body {
 
 /* */
 .table-content {
+  grid-template-columns: 30px repeat(7, 1fr) 54px;
   display: grid;
   justify-content: space-around;
-  grid-template-columns: repeat(9, 1fr);
   grid-template-areas: "tableid tablesdgnr tablecontainernr tableloeschdatum tableuhrzeit tableselect tableabgabdedatum tablenotiz tablebtn"; }
 
 .tableid {
@@ -122,9 +119,9 @@ body {
 
 /* */
 .table-head {
+  grid-template-columns: 30px repeat(7, 1fr) 54px;
   display: grid;
   justify-content: space-around;
-  grid-template-columns: repeat(9, 1fr);
   grid-template-areas: "heading1 heading2 heading3 heading4 heading5 heading6 heading7 heading8 heading9"; }
 
 .heading1 {
@@ -156,9 +153,9 @@ body {
 
 /* */
 .table-add {
+  grid-template-columns: 30px repeat(7, 1fr) 54px;
   display: grid;
   justify-content: space-around;
-  grid-template-columns: repeat(9, 1fr);
   grid-template-areas: "addrowlength addsdgnr addcontainernr addloeschdatum adduhrzeit addtableselect addabgabedatum addnotiz tableaddbtn"; }
 
 .addrowlength {
@@ -251,16 +248,13 @@ body {
   width: 100%; }
 
 .grid-main {
-  background: #2F3136;
-  height: 100%; }
+  background: #2F3136; }
 
 .grid-main-wrap {
   background: #484B51;
   margin-left: auto;
   margin-right: auto;
-  height: 100%;
-  width: 90%;
-  overflow-x: hidden;
+  width: 95%;
   border: 1px transparent;
   border-radius: 0.3em 0.3em 0 0;
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.5); }
@@ -270,12 +264,6 @@ body {
   text-transform: capitalize;
   font-weight: bold;
   margin: 5px; }
-
-.grid-main-content {
-  height: 100%; }
-
-.main-table {
-  width: 100%; }
 
 .title {
   -webkit-user-select: none;
@@ -385,11 +373,7 @@ body {
   line-height: 45px; }
 
 .table-wrap {
-  border: 1px solid #fff;
-  padding-right: 17px;
-  overflow-y: hidden;
-  width: 100%;
-  position: relative; }
+  border: 1px solid #fff; }
 
 .table-head {
   -webkit-user-select: none;
@@ -401,11 +385,18 @@ body {
   font-weight: bold;
   text-align: center; }
 
-.table-content:nth-child(even) {
+.tableid {
+  font-weight: bold; }
+
+.addrowlength {
+  font-weight: bold;
+  text-align: center; }
+
+.table-content:nth-child(even), .table-even {
   background: #666b74;
   text-align: center; }
 
-.table-content:nth-child(odd) {
+.table-content:nth-child(odd), .table-odd {
   background: #888f9b;
   text-align: center; }
 
@@ -449,6 +440,17 @@ input {
 
 .tableselect {
   background-color: #e8eeef; }
+
+.table-list {
+  overflow: hidden;
+  padding-right: 17px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: 0;
+  margin: 0; }
+
+.table-list::-webkit-scrollbar {
+  display: none; }
 
 ul {
   list-style-type: none;
