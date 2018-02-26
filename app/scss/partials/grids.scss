@@ -9,7 +9,7 @@ body {
   padding: 0;
   display: grid;
   grid-template-columns: 100px repeat(11, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-rows: 50px repeat(11, 1fr);
   grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
 
 .grid-topbar {

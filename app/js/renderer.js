@@ -4,6 +4,8 @@ const BrowserWindow = electron.remote.BrowserWindow
 const ipc = electron.ipcRenderer
 
 const fs = require('fs')
+var dialog = require('electron').remote.dialog;
+
 const app = electron.remote.app
 
 var vueapp = new Vue({
@@ -40,6 +42,10 @@ var vueapp = new Vue({
     disabled: function() {
       if(Object.keys(this.shipentries).length < 1) return true;
       return false;
+    },
+    getHeight: function() {
+      var heightString = this.$refs.maincontent.clientHeight + 'px';
+      return heightString;
     }
   }, 
   created: function () {
@@ -67,7 +73,13 @@ var vueapp = new Vue({
         resizable: true,
         transpaent: true,
         alwaysOnTop: true,
-        frame: true
+        backgroundColor: '#202225',
+        show: false,
+        frame: false
+      });
+      win.on('ready-to-show', function () {
+        mainWindow.show();
+        mainWindow.focus();
       });
       win.setMenu(null);
       win.on('close', function () {
@@ -106,8 +118,14 @@ var vueapp = new Vue({
     removeTable: function () {
       this.shipentries.splice(this.currentList);
     },
-    loadTable: function (index) {
-      
+    loadFiles: function (index) {
+      dialog.showOpenDialog({ 
+        properties: [ 
+            'openFile', 'multiSelections', (fileNames) => {
+                console.log(fileNames);
+            }
+        ]
+    });
     },
     saveTable: function (index) {
       return;
@@ -142,6 +160,7 @@ var vueapp = new Vue({
       return;
     },
     exportList: function () {
+
       var savepath = app.getPath('desktop');
       this.path = path.join(savepath, 'hello.json');
       

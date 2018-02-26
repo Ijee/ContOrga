@@ -9,7 +9,7 @@ body {
   padding: 0;
   display: grid;
   grid-template-columns: 100px repeat(11, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-rows: 50px repeat(11, 1fr);
   grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
 
 .grid-topbar {
@@ -271,6 +271,9 @@ body {
   font-weight: bold;
   margin: 5px; }
 
+.grid-main-content {
+  height: 100%; }
+
 .main-table {
   width: 100%; }
 
@@ -381,6 +384,31 @@ body {
   margin: 8px;
   line-height: 45px; }
 
+.table-wrap {
+  border: 1px solid #fff;
+  padding-right: 17px;
+  overflow-y: hidden;
+  width: 100%;
+  position: relative; }
+
+.table-head {
+  -webkit-user-select: none;
+  border: 1px solid #fff;
+  background-color: #484B51;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  text-align: center; }
+
+.table-content:nth-child(even) {
+  background: #666b74;
+  text-align: center; }
+
+.table-content:nth-child(odd) {
+  background: #888f9b;
+  text-align: center; }
+
 table {
   border: 1px solid #fff;
   border-spacing: 2px;
@@ -388,38 +416,8 @@ table {
   table-layout: auto;
   width: 100%; }
 
-table th {
-  -webkit-user-select: none;
-  background-color: #484B51;
-  cursor: pointer;
-  font-weight: bold;
-  text-align: center; }
-
-table thead {
-  border: 1px solid #fff;
-  color: #fff; }
-
-table td {
-  background: #FAFAFA;
-  text-align: center; }
-
-tr:hover {
-  background-color: #0fc909; }
-
-tr:nth-child(even) td {
-  background: #666b74; }
-
-tr:nth-child(odd) td {
-  background: #888f9b; }
-
 th.active .arrow {
   opacity: 1; }
-
-.table-wrap {
-  overflow: hidden;
-  padding-right: 17px;
-  overflow-y: scroll;
-  height: 100%; }
 
 select {
   background-color: #e8eeef;
