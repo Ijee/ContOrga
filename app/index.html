@@ -56,14 +56,12 @@
             </div>
             <div class="table-wrap">
               <div class="table-head">
-                <div v-for="(column, index) in columns" @click="sortBy(column)" :class="addClass(index)">
+                <div v-for="(column, index) in columns" @click="sortBy(index)" :class="addClass(index)">
                   {{ column | capitalize }}
-                  <div class="arrow" :class="addArrow(column, index)">
-                  </div>
                 </div>
               </div>
               <div class="table-list" id="tablelist" v-bind:style="{ height: currentHeight}">
-                <div class="table-content" v-for="eintrag in tabellenEintrag">
+                <div class="table-content" v-for="eintrag in searchList">
                   <div class="tableid cell">{{ eintrag.ID }}</div>
                   <div class="cell">
                     <input v-model="eintrag.SdgNr" class="tableinput tablesdgnr">
@@ -131,7 +129,7 @@
       <div class="grid-footer">
         <div class="grid-search">
           <form>
-            <input v-model="search" type="text" name="search" placeholder="Suchen...">
+            <input v-model="search" type="text" name="search" placeholder="Suchen..." onkeyup="filterList()">
           </form>
         </div>
         <div class="grid-exportall">

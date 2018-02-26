@@ -9,8 +9,19 @@ body {
   padding: 0;
   display: grid;
   grid-template-columns: 100px repeat(11, 1fr);
-  grid-template-rows: 50px repeat(11, 1fr);
-  grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
+  grid-template-rows: 50px repeat(9, 1fr) 50px;
+  grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar" 
+  "sidebar main main main main main main main main main main main"  
+  "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main" 
+     "sidebar main main main main main main main main main main main" 
+     "sidebar main main main main main main main main main main main" 
+      "sidebar main main main main main main main main main main main" 
+      "sidebar main main main main main main main main main main main" 
+       "sidebar main main main main main main main main main main main"
+        "sidebar main main main main main main main main main main main" 
+         "sidebar main main main main main main main main main main main"
+          "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
 
 .grid-topbar {
   grid-area: topbar; }
@@ -37,6 +48,7 @@ body {
 .grid-main {
     grid-area: main;
     display: grid;
+    grid-template-columns: 1fr;
     grid-template-rows: 12px 1fr 12px;
 }
 
@@ -44,6 +56,8 @@ body {
   grid-area: wrap;
   grid-row-start: 2;
   grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 1;
 }
 
 

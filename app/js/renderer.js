@@ -17,12 +17,12 @@ var vueapp = new Vue({
     shipentries: [],
     currentList: '',
 
-    sortKey: 'ID',
-    sortOrders: [],
+    sortKey: 0,
     reverse: false,
     search: '',
 
     init: {},
+    search: '',
     searchList: {},
     currentHeight: '',
 
@@ -36,6 +36,14 @@ var vueapp = new Vue({
       'Abgabedatum',
       'Notiz',
       'Aktion'],
+    actualColumns: ['ID',
+        'SdgNr',
+        'ContainerNr',
+        'Loeschdatum',
+        'Uhrzeit',
+        'Status',
+        'Abgabedatum',
+    'Notiz'],
     tabellenEintrag: []
   },
   computed: {
@@ -48,10 +56,6 @@ var vueapp = new Vue({
     }
   }, 
   created: function () {
-    this.columns.forEach(element => {
-      this.sortOrders[element] = 1;
-    });
-
   },
   filters: {
     capitalize: function (str) {
@@ -91,18 +95,17 @@ var vueapp = new Vue({
       //win.webContents.openDevTools();
     },
     addClass: function(index) {
-      ret = 'heading' + (index + 1);
-      if(this.sortKey == this.columns[index]) 
-      ret += ' active';
+      ret = 'arrow heading' + (index + 1);
+      if(this.sortKey == index) {
+        ret += ' active';
+        ret += this.reverse ? ' asc' : ' dsc';
+      }
       return ret;
     },
-    addArrow: function(column, index) {
-      if(index < 8) return this.sortOrders[column]  > 0 ? 'asc' : 'dsc';
-    },
-    sortBy: function (sortKey) {
-      this.reverse = (this.sortKey == sortKey) ? !this.reverse : false;
-
-      this.sortKey = sortKey;
+    sortBy: function (index) {
+      this.reverse = (this.sortKey == index) ? !this.reverse : false;
+      this.sortKey = index;
+      this.filterList();
     },
     changeTable: function (index) {
       this.name = this.shipentries[index].name;
@@ -111,6 +114,8 @@ var vueapp = new Vue({
       this.tabellenEintrag = this.shipentries[index].tabellenEintrag;
 
       this.currentList = index;
+      
+      this.filterList();
     },
     addTable: function (name, eta, note) {
       this.shipentries.push(new ship(name, eta, note, []));
@@ -118,7 +123,39 @@ var vueapp = new Vue({
       
     },
     removeTable: function () {
-      this.shipentries.splice(this.currentList);
+      this.shipentries.splice(this.currentList, 1);
+      if(this.currentList > 0) {
+          this.changeTable(this.currentList - 1);
+      }
+      this.filterList();
+    },
+    filterList: function() {
+        if(this.search.length > 0) {
+            this.searchList = this.tabellenEintrag.filter(this.myFilter);
+        }
+        else {
+            this.searchList = this.tabellenEintrag;
+        }
+        this.searchList.sort(this.mySorter);
+    },
+    myFilter: function(obj) {
+        boo = false;
+        for(e in obj)
+        {
+            if(obj[e] && typeof obj[e] == 'string') boo = boo || obj[e].toLowerCase().search(this.search.toLowerCase) > -1;
+        }
+        return boo;
+    },
+    mySorter: function(a, b) {
+        sort = this.actualColumns[this.sortKey];
+        x = a[sort];
+        y = b[sort];
+        if(!x && !y) return 0;
+        if(!x) return 1;
+        if(!y) return -1
+        if(typeof x == 'number') return this.reverse ? y-x : x-y;
+        if(typeof x == 'string') return this.reverse ? y.localeCompare(x) : x.localeCompare(y);
+        console.log('Big Mistake was made');
     },
     loadFiles: function (index) {
       dialog.showOpenDialog({ 
@@ -133,9 +170,6 @@ var vueapp = new Vue({
       return;
     },
     addRow: function () {
-      if (this.init.sdgnr === "") {
-        return;
-      }
       this.init = {
         ID: Object.keys(this.tabellenEintrag).length + 1,
         SdgNr: this.init.sdgnr,
@@ -150,7 +184,8 @@ var vueapp = new Vue({
       this.init = {};
       //scroll to bottom
       setTimeout(() => {
-        tablelist.scrollTop = tablelist.scrollHeight; 
+        tablelist.scrollTop = tablelist.scrollHeight;
+        filterList();
       }, 1);
     },
     deleteRow: function (eintrag) {
@@ -161,6 +196,7 @@ var vueapp = new Vue({
       for (i = 1; i <= Object.keys(this.tabellenEintrag).length; i++) {
         this.tabellenEintrag[i - 1].ID = i;
       }
+      this.filterList();
     },
     readFile: function () {
       return;
@@ -195,6 +231,11 @@ function ship(name, shipETA, shipNote, tableobj) {
 */
 function setHeight() {
   vueapp.currentHeight = maincontent.clientHeight - 183 + 'px';
+}
+
+function filterList()
+{
+    vueapp.filterList();
 }
 
 ipc.on('ship-information', function (event, modalName, modalETA, modalNote) {

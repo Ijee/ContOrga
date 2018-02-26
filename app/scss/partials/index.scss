@@ -43,7 +43,6 @@ body {
 .addlistitem {
     border-right: 1px solid #000;
     background-color: #202225;
-    width: 100%;
 }
 
 .grid-main {
@@ -207,7 +206,6 @@ body {
     background-color: $footer-main-wrap-color;
     color: #fff;
     cursor: pointer;
-    width: 100%;
     font-weight: bold;
     text-align: center;
 }
@@ -236,7 +234,6 @@ table {
     border-spacing: 2px;
     border-collapse: collapse;
     table-layout: auto;
-    width: 100%;
 }
 
 th.active .arrow {

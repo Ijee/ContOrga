@@ -9,8 +9,8 @@ body {
   padding: 0;
   display: grid;
   grid-template-columns: 100px repeat(11, 1fr);
-  grid-template-rows: 50px repeat(11, 1fr);
-  grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
+  grid-template-rows: 50px repeat(9, 1fr) 50px;
+  grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar"  "sidebar main main main main main main main main main main main"   "sidebar main main main main main main main main main main main" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main" "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
 
 .grid-topbar {
   grid-area: topbar; }
@@ -37,12 +37,15 @@ body {
 .grid-main {
   grid-area: main;
   display: grid;
+  grid-template-columns: 1fr;
   grid-template-rows: 12px 1fr 12px; }
 
 .grid-main-wrap {
   grid-area: wrap;
   grid-row-start: 2;
-  grid-row-end: 3; }
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 1; }
 
 /* second grid inside grid-main-info */
 .grid-main-info {
@@ -244,8 +247,7 @@ body {
 
 .addlistitem {
   border-right: 1px solid #000;
-  background-color: #202225;
-  width: 100%; }
+  background-color: #202225; }
 
 .grid-main {
   background: #2F3136; }
@@ -381,7 +383,6 @@ body {
   background-color: #484B51;
   color: #fff;
   cursor: pointer;
-  width: 100%;
   font-weight: bold;
   text-align: center; }
 
@@ -404,8 +405,7 @@ table {
   border: 1px solid #fff;
   border-spacing: 2px;
   border-collapse: collapse;
-  table-layout: auto;
-  width: 100%; }
+  table-layout: auto; }
 
 th.active .arrow {
   opacity: 1; }
