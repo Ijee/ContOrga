@@ -142,7 +142,7 @@ var vueapp = new Vue({
         boo = false;
         for(e in obj)
         {
-            if(obj[e] && typeof obj[e] == 'string') boo = boo || obj[e].toLowerCase().search(this.search.toLowerCase) > -1;
+            if(obj[e] && typeof obj[e] == 'string') boo = boo || obj[e].toLowerCase().search(this.search.toLowerCase()) > -1;
         }
         return boo;
     },
@@ -156,15 +156,6 @@ var vueapp = new Vue({
         if(typeof x == 'number') return this.reverse ? y-x : x-y;
         if(typeof x == 'string') return this.reverse ? y.localeCompare(x) : x.localeCompare(y);
         console.log('Big Mistake was made');
-    },
-    loadFiles: function (index) {
-      dialog.showOpenDialog({ 
-        properties: [ 
-            'openFile', 'multiSelections', (fileNames) => {
-                console.log(fileNames);
-            }
-        ]
-    });
     },
     saveTable: function (index) {
       return;
@@ -200,6 +191,18 @@ var vueapp = new Vue({
     },
     readFile: function () {
       return;
+    },
+    loadFiles: function (index) {
+      dialog.showOpenDialog({ 
+        properties: [ 
+            'openFile', 'multiSelections', (fileNames) => {
+                
+                for(i= 0; i < fileNames.length; i++) {
+                  console.log(i);
+                }
+            }
+        ]
+    });
     },
     exportList: function () {
 
