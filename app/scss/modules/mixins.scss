@@ -3,5 +3,6 @@
 }
 
 @mixin grid-table-columns() {
-    grid-template-columns: 30px repeat(7, 1fr) 54px;
+    grid-template-columns: 30px 75px repeat(2, 1fr) 60px 60px repeat(2, 1fr) 54px;
+    grid-column-gap: 8px;
 }

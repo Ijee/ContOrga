@@ -96,7 +96,7 @@ var vueapp = new Vue({
     },
     addClass: function(index) {
       ret = 'arrow heading' + (index + 1);
-      if(this.sortKey == index) {
+      if(this.sortKey == index && this.sortKey < 8) {
         ret += ' active';
         ret += this.reverse ? ' asc' : ' dsc';
       }

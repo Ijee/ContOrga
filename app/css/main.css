@@ -88,7 +88,8 @@ body {
 
 /* */
 .table-content {
-  grid-template-columns: 30px repeat(7, 1fr) 54px;
+  grid-template-columns: 30px 75px repeat(2, 1fr) 60px 60px repeat(2, 1fr) 54px;
+  grid-column-gap: 8px;
   display: grid;
   justify-content: space-around;
   grid-template-areas: "tableid tablesdgnr tablecontainernr tableloeschdatum tableuhrzeit tableselect tableabgabdedatum tablenotiz tablebtn"; }
@@ -122,7 +123,8 @@ body {
 
 /* */
 .table-head {
-  grid-template-columns: 30px repeat(7, 1fr) 54px;
+  grid-template-columns: 30px 75px repeat(2, 1fr) 60px 60px repeat(2, 1fr) 54px;
+  grid-column-gap: 8px;
   display: grid;
   justify-content: space-around;
   grid-template-areas: "heading1 heading2 heading3 heading4 heading5 heading6 heading7 heading8 heading9"; }
@@ -156,7 +158,8 @@ body {
 
 /* */
 .table-add {
-  grid-template-columns: 30px repeat(7, 1fr) 54px;
+  grid-template-columns: 30px 75px repeat(2, 1fr) 60px 60px repeat(2, 1fr) 54px;
+  grid-column-gap: 8px;
   display: grid;
   justify-content: space-around;
   grid-template-areas: "addrowlength addsdgnr addcontainernr addloeschdatum adduhrzeit addtableselect addabgabedatum addnotiz tableaddbtn"; }
@@ -412,20 +415,20 @@ th.active .arrow {
 
 select {
   background-color: #e8eeef;
-  width: 90%;
+  width: 100%;
   border: 0;
   color: #333447;
   padding: 2px;
-  margin: 4px;
+  margin: 0;
   font-weight: bold; }
 
 input {
   background-color: #e8eeef;
-  width: 90%;
+  width: 100%;
   border: 0;
   color: #333447;
   padding: 2px;
-  margin: 4px;
+  margin: 0;
   font-weight: bold; }
 
 .tableinput {
@@ -468,7 +471,6 @@ ul::-webkit-scrollbar {
   float: right; }
 
 .arrow::after {
-  display: absolute;
   vertical-align: middle;
   content: '';
   width: 0;
@@ -477,13 +479,16 @@ ul::-webkit-scrollbar {
 
 .arrow.asc::after {
   position: absolute;
+  top: 195px;
   padding-right: 0;
+  bottom: 15px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-bottom: 4px solid #fff; }
 
 .arrow.dsc::after {
   position: absolute;
+  top: 200px;
   padding-right: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;

@@ -242,20 +242,20 @@ th.active .arrow {
 
 select {
     background-color: $input-color;
-    width: 90%;
+    width: 100%;
     border: 0;
     color: #333447;
     padding: 2px;
-    margin: 4px;
+    margin: 0;
     font-weight: bold;
 }
 input {
     background-color: $input-color;
-    width: 90%;
+    width: 100%;
     border: 0;
     color: #333447;
     padding: 2px;
-    margin: 4px;
+    margin: 0;
     font-weight: bold;
 }
 .tableinput {
@@ -302,7 +302,7 @@ ul::-webkit-scrollbar {
     float: right;
 }
 .arrow::after {
-    display: absolute;
+    
     vertical-align: middle;
     content: '';
     width: 0;
@@ -312,7 +312,9 @@ ul::-webkit-scrollbar {
   
 .arrow.asc::after {
     position: absolute;
+    top: 195px;
     padding-right: 0;
+    bottom: 15px;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 4px solid #fff;
@@ -320,7 +322,8 @@ ul::-webkit-scrollbar {
   
 .arrow.dsc::after {
     position: absolute;
-    padding-right: 0;
+    top: 200px;
+    padding-right: 0;    
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 4px solid #fff;
