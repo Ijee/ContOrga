@@ -74,8 +74,8 @@ app.on('activate', function () {
   }
 })
 
-ipc.on('modal-information', function (event, modalName, modalETA, modalNote) {
-  mainWindow.webContents.send('ship-information', modalName, modalETA, modalNote);
+ipc.on('modal-information', function (event, functionality) {
+  mainWindow.webContents.send('ship-information', functionality);
 })
 
 // In this file you can include the rest of your app's specific main process

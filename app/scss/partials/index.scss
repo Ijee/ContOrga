@@ -249,6 +249,12 @@ select {
     margin: 0;
     font-weight: bold;
 }
+
+.generalinput {
+    margin: 2px;
+    padding: 2px;
+    width: 90%;
+}
 input {
     background-color: $input-color;
     width: 100%;

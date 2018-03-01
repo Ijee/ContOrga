@@ -11,11 +11,13 @@ const app = electron.remote.app
 var vueapp = new Vue({
   el: '#app',
   data: {
-    name: '',
-    eta: '',
-    schiffsnotiz: '',
+    shipInfo: {
+      name: '',
+      eta: '',
+      schiffsnotiz: ''
+    },
     shipentries: [],
-    currentList: '',
+    currentList: '0',
 
     sortKey: 0,
     reverse: false,
@@ -37,24 +39,24 @@ var vueapp = new Vue({
       'Notiz',
       'Aktion'],
     actualColumns: ['ID',
-        'SdgNr',
-        'ContainerNr',
-        'Loeschdatum',
-        'Uhrzeit',
-        'Status',
-        'Abgabedatum',
-    'Notiz'],
+      'SdgNr',
+      'ContainerNr',
+      'Loeschdatum',
+      'Uhrzeit',
+      'Status',
+      'Abgabedatum',
+      'Notiz'],
     tabellenEintrag: []
   },
   computed: {
     rowLength: function () {
       return Object.keys(this.tabellenEintrag).length + 1;
     },
-    disabled: function() {
-      if(Object.keys(this.shipentries).length < 1) return true;
+    disabled: function () {
+      if (Object.keys(this.shipentries).length < 1) return true;
       return false;
     }
-  }, 
+  },
   created: function () {
   },
   filters: {
@@ -79,7 +81,7 @@ var vueapp = new Vue({
         alwaysOnTop: true,
         backgroundColor: '#202225',
         show: false,
-        frame: false
+        frame: true
       });
       win.on('ready-to-show', function () {
         mainWindow.show();
@@ -92,11 +94,11 @@ var vueapp = new Vue({
 
       win.loadURL(modalPath);
       win.show();
-      //win.webContents.openDevTools();
+      win.webContents.openDevTools();
     },
-    addClass: function(index) {
+    addClass: function (index) {
       ret = 'arrow heading' + (index + 1);
-      if(this.sortKey == index && this.sortKey < 8) {
+      if (this.sortKey == index && this.sortKey < 8) {
         ret += ' active';
         ret += this.reverse ? ' asc' : ' dsc';
       }
@@ -108,54 +110,53 @@ var vueapp = new Vue({
       this.filterList();
     },
     changeTable: function (index) {
-      this.name = this.shipentries[index].name;
-      this.eta = this.shipentries[index].shipETA;
-      this.schiffsnotiz = this.shipentries[index].shipNotiz;
+      
+
+      //change current data to table that is to be displayed
+      this.shipInfo = this.shipentries[index].shipInfo;
       this.tabellenEintrag = this.shipentries[index].tabellenEintrag;
 
       this.currentList = index;
-      
       this.filterList();
     },
     addTable: function (name, eta, note) {
-      this.shipentries.push(new ship(name, eta, note, []));
-      this.changeTable(Object.keys(this.shipentries).length -1);
-      
+      this.shipentries.push(new ship({name: name,eta: eta,schiffsnotiz: note}, []));
+      this.changeTable(Object.keys(this.shipentries).length - 1);
+
     },
     removeTable: function () {
       this.shipentries.splice(this.currentList, 1);
-      if(this.currentList > 0) {
-          this.changeTable(this.currentList - 1);
+      if (this.currentList > 0) {
+        this.changeTable(this.currentList - 1);
       }
       this.filterList();
     },
-    filterList: function() {
-        if(this.search.length > 0) {
-            this.searchList = this.tabellenEintrag.filter(this.myFilter);
-        }
-        else {
-            this.searchList = this.tabellenEintrag;
-        }
-        this.searchList.sort(this.mySorter);
+    filterList: function () {
+      if (this.search.length > 0) {
+        this.searchList = this.tabellenEintrag.filter(this.myFilter);
+      }
+      else {
+        this.searchList = this.tabellenEintrag.concat([]);
+      }
+      this.searchList.sort(this.mySorter);
     },
-    myFilter: function(obj) {
-        boo = false;
-        for(e in obj)
-        {
-            if(obj[e] && typeof obj[e] == 'string') boo = boo || obj[e].toLowerCase().search(this.search.toLowerCase()) > -1;
-        }
-        return boo;
+    myFilter: function (obj) {
+      boo = false;
+      for (e in obj) {
+        if (obj[e] && typeof obj[e] == 'string') boo = boo || obj[e].toLowerCase().search(this.search.toLowerCase()) > -1;
+      }
+      return boo;
     },
-    mySorter: function(a, b) {
-        sort = this.actualColumns[this.sortKey];
-        x = a[sort];
-        y = b[sort];
-        if(!x && !y) return 0;
-        if(!x) return 1;
-        if(!y) return -1
-        if(typeof x == 'number') return this.reverse ? y-x : x-y;
-        if(typeof x == 'string') return this.reverse ? y.localeCompare(x) : x.localeCompare(y);
-        console.log('Big Mistake was made');
+    mySorter: function (a, b) {
+      sort = this.actualColumns[this.sortKey];
+      x = a[sort];
+      y = b[sort];
+      if (!x && !y) return 0;
+      if (!x) return 1;
+      if (!y) return -1
+      if (typeof x == 'number') return this.reverse ? y - x : x - y;
+      if (typeof x == 'string') return this.reverse ? y.localeCompare(x) : x.localeCompare(y);
+      console.log('Big Mistake was made');
     },
     saveTable: function (index) {
       return;
@@ -192,28 +193,28 @@ var vueapp = new Vue({
     readFile: function () {
       return;
     },
-    loadFiles: function (index) {
-      dialog.showOpenDialog({ 
-        properties: [ 
-            'openFile', 'multiSelections', (fileNames) => {
-                
-                for(i= 0; i < fileNames.length; i++) {
-                  console.log(i);
-                }
+    loadFiles: function () {
+      dialog.showOpenDialog({
+        properties: [
+          'openFile', 'multiSelections', (fileNames) => {
+            console.log("hey");
+            for (i = 0; i < fileNames.length; i++) {
+
             }
+          }
         ]
-    });
+      });
     },
     exportList: function () {
 
       var savepath = app.getPath('desktop');
       this.path = path.join(savepath, 'hello.json');
-      
+
       content = JSON.stringify(this.shipentries[this.currentList]);
 
       fs.writeFile(this.path, content, (err) => {
         if (err) throw err;
-        
+
       });
     },
     exportAll: function () {
@@ -222,10 +223,8 @@ var vueapp = new Vue({
   }
 })
 
-function ship(name, shipETA, shipNote, tableobj) {
-  this.name = name;
-  this.shipETA = shipETA;
-  this.shipNotiz = shipNote;
+function ship(shipInfo, tableobj) {
+  this.shipInfo = shipInfo;
   this.tabellenEintrag = tableobj;
 }
 
@@ -236,15 +235,14 @@ function setHeight() {
   vueapp.currentHeight = maincontent.clientHeight - 183 + 'px';
 }
 
-function filterList()
-{
-    vueapp.filterList();
+function filterList() {
+  vueapp.filterList();
 }
 
-ipc.on('ship-information', function (event, modalName, modalETA, modalNote) {
-  Vue.set(vueapp.$data, 'name', modalName);
-  Vue.set(vueapp.$data, 'eta', modalETA);
-  Vue.set(vueapp.$data, 'schiffsnotiz', modalNote);
-
-  vueapp.addTable(modalName, modalETA, modalNote);
+ipc.on('ship-information', function (event, functionality) {
+  if (functionality == 'addTable') {
+    vueapp.addTable('', '', '');
+  } else if (functionality == 'addExisting') {
+    vueapp.loadFiles();
+  }
 })

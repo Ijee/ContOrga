@@ -12,36 +12,15 @@
 <body>
     <div id="modal">
         <div class="modal-content">
-            <div class="modal-title title">
-                Neue Schiffstabelle erstellen:
+            <div class="modal-addnew">
+                <button v-on:click="addTable" class="btn modalbtn addnewbtn">Neue Tabelle</button>
             </div>
-            <form class="modal-submission">
-                <div class="modal-name">
-                    <div class="modalitemtitle">
-                        <label for="shipname">Schiffsname</label>*
-                        <br>
-                    </div>
-                    <input type="text" class="modalinput" id="shipname" v-model="modalName" required>
-                </div>
-                <div class="modal-eta">
-                    <div class="modalitemtitle">
-                        <label for="shipeta">ETA</label>
-                        <br>
-                    </div>
-                    <input type="text" class="modalinput" id="shipeta" v-model="modalETA">
-                </div>
-                <div class="modal-note">
-                    <div class="modalitemtitle">
-                        <label for="shipnote">Notiz</label>
-                        <br>
-                    </div>
-                    <input type="text" class="modalinput" id="shipnote" v-model="modalNote">
-                </div>
-                <div class="modal-submit">
-                    <button type="button" v-on:click="cancelBtn" class="btn modalbtn">Abbrechen</button>
-                    <button type="submit" v-on:click="okBtn" class="btn modalbtn">O.K.</button>
-                </div>
-            </form>
+            <div class="modal-loadnew">
+                <button v-on:click="addExisting" class="btn modalbtn loadnewbtn">Bestehende Tabelle laden</button>
+            </div>
+            <div class="modal-cancel">
+                <button v-on:click="cancel" class="btn modalbtn cancelbtn">Abbrechen</button>
+            </div>
         </div>
     </div>
     <script>

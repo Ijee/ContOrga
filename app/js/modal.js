@@ -3,26 +3,24 @@ const path = require('path')
 const remote = electron.remote
 const ipc = electron.ipcRenderer
 
-
 var modalapp = new Vue({
     el: '#modal',
     data: {
-        modalName: '',
-        modalETA: '',
-        modalNote: ''
+        modalName: ''
+
     },
     methods: {
-        chooseDelete: function() {
-            return;
-        },
-        cancelBtn: function() {
+        cancel: function() {
             var window = remote.getCurrentWindow();
             window.close();
         },
-        okBtn: function() {
-            ipc.send('modal-information', this.$data.modalName, this.$data.modalETA, this.$data.modalNote);
-            var window = remote.getCurrentWindow();
-            window.close();
+        addExisting: function() {
+            ipc.send('modal-information', 'addExisting')
+            this.cancel();
+        },
+        addTable: function() {
+            ipc.send('modal-information', 'addTable');
+            this.cancel();
         }
     }
 })

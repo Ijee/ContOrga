@@ -1,6 +1,6 @@
 {
   "name": "ContOrga",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A tool to track container around the world",
   "main": "main.js",
   "devDependencies": {
@@ -22,5 +22,4 @@
     "email": "thorsten.schulz.ger@googlemail.com",
     "url": "Ijee.site"
   }
-
 }

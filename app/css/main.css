@@ -192,26 +192,20 @@ body {
   grid-area: tableaddbtn; }
 
 /* modal.html grid */
-.modal-submission {
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+.modal-content {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   display: grid;
-  grid-template-areas: "modal-name" "modal-eta" "modal-note" "modal-submit"; }
+  grid-template-areas: "addnew loadnew" "cancel cancel"; }
 
-.modal-title {
-  grid-area: modal-title; }
+.modal-addnew {
+  grid-area: addnew; }
 
-.modal-name {
-  grid-area: modal-name; }
+.modal-loadnew {
+  grid-area: loadnew; }
 
-.modal-eta {
-  grid-area: modal-eta; }
-
-.modal-note {
-  grid-area: modal-note; }
-
-.modal-submit {
-  grid-area: modal-submit; }
+.modal-cancel {
+  grid-area: cancel; }
 
 body {
   font: caption;
@@ -422,6 +416,11 @@ select {
   margin: 0;
   font-weight: bold; }
 
+.generalinput {
+  margin: 2px;
+  padding: 2px;
+  width: 90%; }
+
 input {
   background-color: #e8eeef;
   width: 100%;
@@ -501,10 +500,6 @@ body {
 #modal {
   -webkit-app-region: drag; }
 
-.modalitemtitle {
-  font-weight: bold;
-  padding-left: 8px; }
-
 .modalinput {
   -webkit-app-region: no-drag;
   background-color: #e8eeef;
@@ -528,10 +523,15 @@ body {
   width: 90%; }
 
 .modalbtn {
+  -webkit-user-select: auto;
   -webkit-app-region: no-drag;
-  line-height: 25px;
-  float: right;
-  margin-right: 5px; }
+  display: block;
+  padding: 10px;
+  width: 100%;
+  text-align: center; }
 
-textarea {
-  resize: none; }
+.addnewbtn {
+  background-color: green; }
+
+.loadnewbtn {
+  background-color: blue; }

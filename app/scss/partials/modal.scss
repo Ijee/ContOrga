@@ -6,11 +6,6 @@ body {
     -webkit-app-region: drag;
 }
 
-.modalitemtitle {
-    font-weight: bold;
-    padding-left: 8px;
-}
-
 .modalinput {
     -webkit-app-region: no-drag;
     background-color: #e8eeef;
@@ -36,14 +31,23 @@ body {
     width: 90%;
 }
 
-
 .modalbtn {
+    -webkit-user-select: auto;
     -webkit-app-region: no-drag;
-    line-height: 25px;
-    float: right;
-    margin-right:5px;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    text-align:center;
 }
 
-textarea {
-    resize: none;
+.addnewbtn {
+    background-color: green;
+}
+
+.loadnewbtn {
+    background-color: blue;
+}
+
+.cancelbtn {
+
 }

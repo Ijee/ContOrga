@@ -22,7 +22,7 @@
         <ul class="grid-sidebar-wrap">
           <li v-for="(schiff, index) in shipentries" :key="index" class="listitem-container">
             <button v-on:click="changeTable(index)" class="btn listbtn" v-bind:class="schiff.schiffID">
-              <span class="listitem-name">{{ schiff.name | first8 }}</span>
+              <span class="listitem-name">{{ schiff.shipInfo.name | first8 }}</span>
             </button>
           </li>
         </ul>
@@ -39,16 +39,16 @@
             <div class="main-section">
               Name:
             </div>
-            <input v-model="name" id="tablename" class="grid-main-name-input" :disabled="disabled">
+            <input v-model="shipInfo.name" id="tablename" class="generalinput" :disabled="disabled">
             <div class="main-section">
               ETA:
             </div>
             <div class="main-filler"></div>
-            <input v-model="eta" id="tableeta" class="main-name-eta" :disabled="disabled">
+            <input v-model="shipInfo.eta" id="tableeta" class="generalinput" :disabled="disabled">
             <div class="main-section">
               Notiz:
             </div>
-            <input v-model="schiffsnotiz" id="tablenote" class="name-note" :disabled="disabled">
+            <input v-model="shipInfo.schiffsnotiz" id="tablenote" class="generalinput" :disabled="disabled">
           </div>
           <div class="grid-main-content">
             <div class="grid-main-content-title title">
