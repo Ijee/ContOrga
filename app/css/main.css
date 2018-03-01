@@ -194,7 +194,7 @@ body {
 /* modal.html grid */
 .modal-content {
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   display: grid;
   grid-template-areas: "addnew loadnew" "cancel cancel"; }
 
@@ -305,7 +305,6 @@ body {
   float: right; }
 
 .btn {
-  -webkit-user-select: none;
   border: 2px solid #fff;
   color: #3CA374;
   background: none;
@@ -315,11 +314,6 @@ body {
   font-weight: bold;
   outline: none;
   transition: all 0.3s; }
-
-.btn:hover,
-.btn:active {
-  color: #333447;
-  background: #fff; }
 
 .addbtn {
   font-size: 2.5em;
@@ -344,6 +338,14 @@ body {
   background-repeat: no-repeat;
   background-size: 24px 24px;
   background-position: top; }
+
+.listbtn.active {
+  background-color: #41454d; }
+
+.btn:hover,
+.btn:active {
+  color: #333447;
+  background-color: #fff !important; }
 
 .tablebtn {
   background-image: url("../asset/deleteButton.png");
@@ -374,11 +376,11 @@ body {
   line-height: 45px; }
 
 .table-wrap {
-  border: 1px solid #fff; }
+  border: 2px solid #fff; }
 
 .table-head {
   -webkit-user-select: none;
-  border: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   background-color: #484B51;
   color: #fff;
   cursor: pointer;
@@ -452,7 +454,6 @@ input {
 
 .table-list {
   overflow: hidden;
-  padding-right: 17px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   padding: 0;
@@ -464,7 +465,6 @@ input {
 ul {
   list-style-type: none;
   overflow: hidden;
-  padding-right: 17px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   padding: 0;
@@ -501,56 +501,28 @@ ul::-webkit-scrollbar {
   border-top: 4px solid #fff; }
 
 body {
-  background: #2f3136;
-  opacity: 0.8; }
-
-#modal {
-  -webkit-app-region: drag; }
-
-.modalinput {
-  -webkit-app-region: no-drag;
-  background-color: #e8eeef;
-  border: 0;
-  border-radius: 4px;
-  color: #8a97a0;
-  padding: 8px;
-  margin: auto 5px 2px 5px;
-  font-weight: bolder;
-  width: 90%; }
+  background: #2f3136; }
 
 .modal-content {
-  -webkit-app-region: drag; }
-
-.modalinput input[type=text] {
-  -webkit-app-region: no-drag;
-  font-weight: bold; }
-
-.modalsubmit {
-  -webkit-app-region: no-drag;
-  padding: 8px;
-  display: block;
-  margin: 14px auto 14px auto;
-  width: 90%; }
+  height: 100vh;
+  width: 100vw; }
 
 .modalbtn {
-  -webkit-user-select: auto;
-  -webkit-app-region: no-drag;
   color: #fff;
   display: block;
-  padding: 10px;
-  width: 98%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   text-transform: uppercase; }
 
 .addnewbtn {
-  background-color: #7289DA; }
+  background-color: #7289DA;
+  border-right: 0; }
 
 .loadnewbtn {
   background-color: #3CA374; }
 
 .cancelbtn {
-  margin: 4px;
-  vertical-align: bottom; }
+  border-top: 0; }

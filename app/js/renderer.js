@@ -36,7 +36,7 @@ var vueapp = new Vue({
       'Sdg Nr',
       'Container Nr',
       'Löschdatum',
-      'Uhrzeit',
+      'Halle',
       'Status',
       'Abgabedatum',
       'Notiz',
@@ -45,7 +45,7 @@ var vueapp = new Vue({
       'SdgNr',
       'ContainerNr',
       'Loeschdatum',
-      'Uhrzeit',
+      'Halle',
       'Status',
       'Abgabedatum',
       'Notiz'],
@@ -75,29 +75,31 @@ var vueapp = new Vue({
   },
   methods: {
     showModal: function () {
-      const modalPath = path.join('file://', __dirname, 'modal.html')
-      let win = new BrowserWindow({
-        width: 400,
-        height: 150,
-        resizable: true,
-        transpaent: true,
-        alwaysOnTop: true,
-        backgroundColor: '#202225',
-        show: false,
-        frame: false
-      });
-      win.on('ready-to-show', function () {
-        mainWindow.show();
-        mainWindow.focus();
-      });
-      win.setMenu(null);
-      win.on('close', function () {
-        win = null;
-      })
-
-      win.loadURL(modalPath);
-      win.show();
-      win.webContents.openDevTools();
+      if(!this.modalOpen) {
+        this.modalOpen = true;
+        const modalPath = path.join('file://', __dirname, 'modal.html')
+        let win = new BrowserWindow({
+          width: 400,
+          height: 150,
+          resizable: true,
+          backgroundColor: '#202225',
+          show: false,
+          frame: false
+        });
+        win.on('ready-to-show', function () {
+          mainWindow.show();
+          mainWindow.focus();
+        });
+        win.setMenu(null);
+        win.on('close', function () {
+          vueapp.modalOpen = false;
+          win = null;
+        })
+  
+        win.loadURL(modalPath);
+        win.show();
+        win.webContents.openDevTools();
+      }
     },
     addClass: function (index) {
       ret = 'arrow heading' + (index + 1);
@@ -168,7 +170,7 @@ var vueapp = new Vue({
         SdgNr: this.init.sdgnr,
         ContainerNr: this.init.containernr,
         Loeschdatum: this.init.loeschdatum,
-        Uhrzeit: this.init.uhrzeit,
+        Halle: this.init.halle,
         Status: this.init.status,
         Abgabedatum: this.init.abgabedatum,
         Notiz: this.init.notiz
@@ -178,8 +180,8 @@ var vueapp = new Vue({
       //scroll to bottom
       setTimeout(() => {
         tablelist.scrollTop = tablelist.scrollHeight;
-        filterList();
       }, 1);
+      filterList();
     },
     deleteRow: function (eintrag) {
       this.tabellenEintrag.splice(eintrag.ID - 1, 1);

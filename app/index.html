@@ -21,7 +21,7 @@
       <div class="grid-sidebar">
         <ul class="grid-sidebar-wrap">
           <li v-for="(schiff, index) in shipentries" :key="index" class="listitem-container">
-            <button v-on:click="changeTable(index)" class="btn listbtn" v-bind:class="schiff.schiffID">
+            <button v-on:click="changeTable(index)" class="btn listbtn" v-bind:class="schiff.shipInfo == shipInfo ? 'active' : 'inactive'">
               <span class="listitem-name">{{ schiff.shipInfo.name | first8 }}</span>
             </button>
           </li>
