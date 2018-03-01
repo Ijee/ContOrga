@@ -18,6 +18,10 @@ body {
     width: 90%;
 }
 
+.modal-content {
+    -webkit-app-region: drag;
+}
+
 .modalinput input[type=text] {
     -webkit-app-region: no-drag;
     font-weight: bold
@@ -34,18 +38,29 @@ body {
 .modalbtn {
     -webkit-user-select: auto;
     -webkit-app-region: no-drag;
+    color: #fff;
     display: block;
     padding: 10px;
-    width: 100%;
+    width: 98%;
+    height: 95%;
+    margin-left: auto;
+    margin-right: auto;
     text-align:center;
+    text-transform: uppercase;
 }
 
 .addnewbtn {
-    background-color: green;
+    background-color: $modal-button-color-1;
+    
 }
 
 .loadnewbtn {
-    background-color: blue;
+    background-color: $modal-button-color-2;
+}
+.cancelbtn {
+    margin: 4px;
+    
+    vertical-align: bottom;
 }
 
 .cancelbtn {

@@ -28,6 +28,9 @@ var vueapp = new Vue({
     searchList: {},
     currentHeight: '',
 
+    //temporary multiple modal window fix
+    modalOpen: false,
+
 
     columns: ['ID',
       'Sdg Nr',
@@ -75,13 +78,13 @@ var vueapp = new Vue({
       const modalPath = path.join('file://', __dirname, 'modal.html')
       let win = new BrowserWindow({
         width: 400,
-        height: 260,
+        height: 150,
         resizable: true,
         transpaent: true,
         alwaysOnTop: true,
         backgroundColor: '#202225',
         show: false,
-        frame: true
+        frame: false
       });
       win.on('ready-to-show', function () {
         mainWindow.show();
@@ -110,8 +113,6 @@ var vueapp = new Vue({
       this.filterList();
     },
     changeTable: function (index) {
-      
-
       //change current data to table that is to be displayed
       this.shipInfo = this.shipentries[index].shipInfo;
       this.tabellenEintrag = this.shipentries[index].tabellenEintrag;

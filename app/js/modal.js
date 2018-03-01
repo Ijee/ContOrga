@@ -6,7 +6,6 @@ const ipc = electron.ipcRenderer
 var modalapp = new Vue({
     el: '#modal',
     data: {
-        modalName: ''
 
     },
     methods: {

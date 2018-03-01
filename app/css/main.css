@@ -223,7 +223,7 @@ body {
 
 .logo {
   background-color: #202225;
-  background-image: url("../asset/Contorga_logo_min_v2.png");
+  background-image: url("../asset/Contorga_logo_min.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center; }
@@ -266,7 +266,7 @@ body {
 
 .title {
   -webkit-user-select: none;
-  background-color: #B9C300;
+  background-color: #3CA374;
   color: #333447;
   text-transform: capitalize;
   font-weight: bold;
@@ -288,6 +288,7 @@ body {
 .grid-search {
   top: 50%;
   transform: translateY(50%);
+  margin-left: 4px;
   float: left;
   width: auto; }
 
@@ -306,7 +307,7 @@ body {
 .btn {
   -webkit-user-select: none;
   border: 2px solid #fff;
-  color: #fff;
+  color: #3CA374;
   background: none;
   cursor: pointer;
   display: block;
@@ -329,7 +330,7 @@ body {
 .listbtn {
   background-image: url("../asset/shipentry.png");
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 24px 24px;
   background-position: top;
   height: 50px;
   width: 85%;
@@ -341,7 +342,7 @@ body {
 .listbtn:active {
   background-image: url("../asset/shipentry_dark.png");
   background-repeat: no-repeat;
-  background-size: 32px 32px;
+  background-size: 24px 24px;
   background-position: top; }
 
 .tablebtn {
@@ -361,7 +362,8 @@ body {
   cursor: pointer; }
 
 .tableaddbtn {
-  margin: 4px auto 4px auto; }
+  margin: 2px auto 2px auto;
+  color: #fff; }
 
 .tablebtn:focus {
   outline: none;
@@ -408,12 +410,17 @@ th.active .arrow {
   opacity: 1; }
 
 select {
+  display: block;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 15px;
   background-color: #e8eeef;
-  width: 100%;
+  width: 95%;
   border: 0;
   color: #333447;
   padding: 2px;
-  margin: 0;
+  margin: 3px;
   font-weight: bold; }
 
 .generalinput {
@@ -423,7 +430,7 @@ select {
 
 input {
   background-color: #e8eeef;
-  width: 100%;
+  width: 95%;
   border: 0;
   color: #333447;
   padding: 2px;
@@ -511,6 +518,9 @@ body {
   font-weight: bolder;
   width: 90%; }
 
+.modal-content {
+  -webkit-app-region: drag; }
+
 .modalinput input[type=text] {
   -webkit-app-region: no-drag;
   font-weight: bold; }
@@ -525,13 +535,22 @@ body {
 .modalbtn {
   -webkit-user-select: auto;
   -webkit-app-region: no-drag;
+  color: #fff;
   display: block;
   padding: 10px;
-  width: 100%;
-  text-align: center; }
+  width: 98%;
+  height: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  text-transform: uppercase; }
 
 .addnewbtn {
-  background-color: green; }
+  background-color: #7289DA; }
 
 .loadnewbtn {
-  background-color: blue; }
+  background-color: #3CA374; }
+
+.cancelbtn {
+  margin: 4px;
+  vertical-align: bottom; }
