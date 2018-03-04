@@ -131,6 +131,9 @@ var vueapp = new Vue({
       this.shipentries.splice(this.currentList, 1);
       if (this.currentList > 0) {
         this.changeTable(this.currentList - 1);
+      } else {
+        this.shipInfo = { name: '', eta: '', schiffsnotiz: '' };
+        this.tabellenEintrag = [];
       }
       this.filterList();
     },
@@ -213,14 +216,14 @@ var vueapp = new Vue({
           return;
         } else {
           for (i = 0; i < fileNames.length; i++) {
-            fs.readFile(fileNames[i], { encoding:'utf-8', flag: 'r' }, function (err, data) {
-              if(err) {
+            fs.readFile(fileNames[i], { encoding: 'utf-8', flag: 'r' }, function (err, data) {
+              if (err) {
                 console.log(err);
               } else {
                 tmpData = JSON.parse(data);
                 vueapp.addTable(tmpData.shipInfo, tmpData.tabellenEintrag);
               }
-              
+
 
             });
           }
@@ -242,24 +245,42 @@ var vueapp = new Vue({
 
       var savePath = app.getPath('home');
       date = new Date();
-      filePath = path.join(savePath, date.toISOString().substring(0,10) + '-' + this.shipentries[index].shipInfo.name + '.json');
-      console.log(filePath);
-      dialog.showSaveDialog({
-        options:{
-          defaultpath: filePath,
-          
+      filePath = path.join(savePath, date.toISOString().substring(0, 10) + '-' + this.shipentries[index].shipInfo.name + '.json');
+      file = dialog.showSaveDialog({
+        defaultPath: filePath,
+        filters: [
+          { name: 'json', extensions: ['json'] }
+        ]
+
+      });
+      if (file) {
+        this.saveFile(file, this.currentList);
+      }
+    },
+    exportAll: function () {
+      var savePath = app.getPath('home');
+      date = new Date();
+      
+      dir = dialog.showOpenDialog({
+        defaultPath: savePath,
+        buttonLabel: 'Alle Speichern',
+        properties: [
+          'openDirectory', 
+        ]
+      });
+      if(dir[0]) {
+        for(i=0; i < this.shipentries.length; i++) {
+          filePath = path.join(dir[0], date.toISOString().substring(0, 10) + '-' + this.shipentries[i].shipInfo.name + '.json');
+          this.saveFile(filePath, i);
         }
-      })
-
-      content = JSON.stringify(this.shipentries[this.currentList]);
-
-      fs.writeFile(this.path, content, (err) => {
+      }
+    },
+    saveFile: function (file, index) {
+      content = JSON.stringify(this.shipentries[index]);
+      fs.writeFile(file, content, (err) => {
         if (err) throw err;
 
       });
-    },
-    exportAll: function () {
-      return;
     }
   }
 })
@@ -282,7 +303,7 @@ function filterList() {
 
 ipc.on('ship-information', function (event, functionality) {
   if (functionality == 'addTable') {
-    vueapp.addTable({name: '', eta: '', schiffsnotiz: ''}, []);
+    vueapp.addTable({ name: '', eta: '', schiffsnotiz: '' }, []);
   } else if (functionality == 'addExisting') {
     vueapp.loadFiles();
   }

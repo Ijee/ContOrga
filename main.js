@@ -6,7 +6,6 @@ const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
-const modal = require('electron-modal');
 
 const ipc = require('electron').ipcMain
 
