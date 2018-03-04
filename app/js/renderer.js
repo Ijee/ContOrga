@@ -230,17 +230,6 @@ var vueapp = new Vue({
         }
       })
     },
-    /*
-      dialog.showOpenDialog({
-        properties: [
-          'openFile', 'multiSelections', (fileNames) => {
-            console.log("hey");
-            for (i = 0; i < fileNames.length; i++) {
-
-            }
-          }
-        ]
-      }); */
     exportList: function (index) {
 
       var savePath = app.getPath('home');
@@ -279,7 +268,6 @@ var vueapp = new Vue({
       content = JSON.stringify(this.shipentries[index]);
       fs.writeFile(file, content, (err) => {
         if (err) throw err;
-
       });
     }
   }

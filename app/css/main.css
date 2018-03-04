@@ -503,30 +503,6 @@ ul::-webkit-scrollbar {
   border-right: 4px solid transparent;
   border-top: 4px solid #fff; }
 
-/* base */
-.listitem-container {
-  backface-visibility: hidden;
-  z-index: 1; }
-
-/* moving */
-.listitem-container-move {
-  transition: all 600ms ease-in-out 50ms; }
-
-/* appearing */
-.listitem-container-enter-active {
-  transition: all 400ms ease-out; }
-
-/* disappearing */
-.listitem-container-leave-active {
-  transition: all 200ms ease-in;
-  position: absolute;
-  z-index: 0; }
-
-/* appear at / disappear to */
-.listitem-container-enter,
-.listitem-container-leave-to {
-  opacity: 0; }
-
 body {
   background: #2f3136; }
 
