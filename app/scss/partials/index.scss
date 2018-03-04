@@ -1,6 +1,6 @@
 body {
     font: caption;
-    color: #fff;
+    color: $base-font-color;
     line-height: 1.5;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -12,11 +12,11 @@ body {
 
 .grid-topbar {
     border-bottom: 1px solid #000;
-    background-color: #202225;
+    background-color: $sidebar-main-color;
 }
 
 .logo {
-    background-color: #202225;
+    background-color: $sidebar-main-color;
     background-image: url('../asset/Contorga_logo_min.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -42,7 +42,7 @@ body {
 
 .addlistitem {
     border-right: 1px solid #000;
-    background-color: #202225;
+    background-color: $sidebar-main-color;
 }
 
 .grid-main {
@@ -86,6 +86,7 @@ body {
 
 .main-section {
     @include not-selectable;
+    color: #fff;
 }
 
 .grid-main-content {
@@ -122,9 +123,8 @@ body {
     float: right;
 }
 .btn {
-    
     border: 2px solid #fff;
-	color: $modal-button-color-2;
+	color: #fff;
 	background: none;
     cursor: pointer;
 	display: block;
@@ -137,6 +137,7 @@ body {
 
 
 .addbtn {
+    color: $modal-button-color-2;
     font-size: 2.5em;
     height: 50px;
     margin: 8px auto 8px auto;
@@ -148,6 +149,7 @@ body {
     background-repeat: no-repeat;
     background-size: 24px 24px;
     background-position: top;
+    color: $modal-button-color-2;
     height: 50px;
     width: 85%;
     text-align: right;
@@ -170,7 +172,7 @@ body {
 
 .btn:hover,
 .btn:active {
-	color: #333447;
+	color: $base-font-color;
 	background-color: #fff !important;
 }
 .tablebtn {
@@ -221,6 +223,7 @@ body {
 
 .tableid{
     font-weight: bold;
+    color: #fff;
 }
 
 .addrowlength {
@@ -258,7 +261,7 @@ select {
     background-color: $input-color;
     width: 95%;
     border: 0;
-    color: #333447;
+    color: $base-font-color;
     padding: 2px;
     margin: 3px;
     font-weight: bold;
@@ -273,13 +276,11 @@ input {
     background-color: $input-color;
     width: 95%;
     border: 0;
-    color: #333447;
     padding: 2px;
     margin: 0;
     font-weight: bold;
 }
 .tableinput {
-    color: #fff;
     border: none;
     background: transparent;
     text-align: center;
@@ -294,6 +295,7 @@ input {
 }
 
 .table-list {
+    color: #fff;
     overflow: hidden; 
     overflow-y:scroll;
     -webkit-overflow-scrolling: touch;
@@ -346,6 +348,3 @@ ul::-webkit-scrollbar {
     border-right: 4px solid transparent;
     border-top: 4px solid #fff;
 }
-
-
-

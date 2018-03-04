@@ -73,7 +73,7 @@
                     <input v-model="eintrag.Loeschdatum" class="tableinput tableloeschdatum">
                   </div>
                   <div class="cell">
-                    <input v-model="eintrag.Uhrzeit" class="tableinput tableuhrzeit">
+                    <input v-model="eintrag.Halle" class="tableinput tablehalle">
                   </div>
                   <div>
                     <select v-model="eintrag.Status" class="tableselect">
@@ -102,8 +102,8 @@
                   <div class="addloeschdatum">
                     <input v-model="init.loeschdatum" :disabled="disabled">
                   </div>
-                  <div class="adduhrzeit">
-                    <input v-model="init.uhrzeit" :disabled="disabled">
+                  <div class="addhalle">
+                    <input v-model="init.halle" :disabled="disabled">
                   </div>
                   <div>
                     <select v-model="init.status" class="addtableselect" :disabled="disabled">
@@ -133,10 +133,10 @@
           </form>
         </div>
         <div class="grid-exportall">
-          <button v-on:click="loadFiles"class="btn funcbtn">Alle Exportieren</button>
+          <button v-on:click="loadFiles" class="btn funcbtn">Alle Exportieren</button>
         </div>
         <div class="grid-exportlist">
-          <button v-on:click="exportList" class="btn funcbtn">Liste Exportieren</button>
+          <button v-on:click="exportList(currentList)" class="btn funcbtn">Liste Exportieren</button>
         </div>
         <div class="grid-removelist">
           <button v-on:click="removeTable" class="btn funcbtn">Liste entfernen</button>

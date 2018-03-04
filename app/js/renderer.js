@@ -3,6 +3,7 @@ const path = require('path')
 const BrowserWindow = electron.remote.BrowserWindow
 const ipc = electron.ipcRenderer
 
+
 const fs = require('fs')
 var dialog = require('electron').remote.dialog;
 
@@ -75,9 +76,9 @@ var vueapp = new Vue({
   },
   methods: {
     showModal: function () {
-      if(!this.modalOpen) {
+      if (!this.modalOpen) {
         this.modalOpen = true;
-        const modalPath = path.join('file://', __dirname, 'modal.html')
+        const modalPath = path.join('file://', __dirname, 'modal.html');
         let win = new BrowserWindow({
           width: 400,
           height: 150,
@@ -95,10 +96,10 @@ var vueapp = new Vue({
           vueapp.modalOpen = false;
           win = null;
         })
-  
+
         win.loadURL(modalPath);
         win.show();
-        win.webContents.openDevTools();
+        //win.webContents.openDevTools();
       }
     },
     addClass: function (index) {
@@ -122,10 +123,9 @@ var vueapp = new Vue({
       this.currentList = index;
       this.filterList();
     },
-    addTable: function (name, eta, note) {
-      this.shipentries.push(new ship({name: name,eta: eta,schiffsnotiz: note}, []));
+    addTable: function (shipInfo, entries) {
+      this.shipentries.push(new ship(shipInfo, entries));
       this.changeTable(Object.keys(this.shipentries).length - 1);
-
     },
     removeTable: function () {
       this.shipentries.splice(this.currentList, 1);
@@ -198,6 +198,37 @@ var vueapp = new Vue({
     },
     loadFiles: function () {
       dialog.showOpenDialog({
+        filters: [
+          { name: 'All Files', extensions: ['txt', 'json'] },
+          { name: 'text', extensions: ['txt'] },
+          { name: 'json', extensions: ['json'] }
+
+        ],
+        properties: [
+          'openFile', 'multiSelections'
+        ],
+      }, function (fileNames) {
+
+        if (fileNames === undefined) {
+          return;
+        } else {
+          for (i = 0; i < fileNames.length; i++) {
+            fs.readFile(fileNames[i], { encoding:'utf-8', flag: 'r' }, function (err, data) {
+              if(err) {
+                console.log(err);
+              } else {
+                tmpData = JSON.parse(data);
+                vueapp.addTable(tmpData.shipInfo, tmpData.tabellenEintrag);
+              }
+              
+
+            });
+          }
+        }
+      })
+    },
+    /*
+      dialog.showOpenDialog({
         properties: [
           'openFile', 'multiSelections', (fileNames) => {
             console.log("hey");
@@ -206,12 +237,19 @@ var vueapp = new Vue({
             }
           }
         ]
-      });
-    },
-    exportList: function () {
+      }); */
+    exportList: function (index) {
 
-      var savepath = app.getPath('desktop');
-      this.path = path.join(savepath, 'hello.json');
+      var savePath = app.getPath('home');
+      date = new Date();
+      filePath = path.join(savePath, date.toISOString().substring(0,10) + '-' + this.shipentries[index].shipInfo.name + '.json');
+      console.log(filePath);
+      dialog.showSaveDialog({
+        options:{
+          defaultpath: filePath,
+          
+        }
+      })
 
       content = JSON.stringify(this.shipentries[this.currentList]);
 
@@ -244,7 +282,7 @@ function filterList() {
 
 ipc.on('ship-information', function (event, functionality) {
   if (functionality == 'addTable') {
-    vueapp.addTable('', '', '');
+    vueapp.addTable({name: '', eta: '', schiffsnotiz: ''}, []);
   } else if (functionality == 'addExisting') {
     vueapp.loadFiles();
   }

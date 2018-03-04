@@ -209,7 +209,7 @@ body {
 
 body {
   font: caption;
-  color: #fff;
+  color: #41425c;
   line-height: 1.5;
   overflow-x: hidden;
   overflow-y: hidden; }
@@ -267,7 +267,7 @@ body {
 .title {
   -webkit-user-select: none;
   background-color: #3CA374;
-  color: #333447;
+  color: #41425c;
   text-transform: capitalize;
   font-weight: bold;
   text-align: center;
@@ -275,7 +275,8 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24); }
 
 .main-section {
-  -webkit-user-select: none; }
+  -webkit-user-select: none;
+  color: #fff; }
 
 .grid-main-content {
   margin: 5px; }
@@ -306,7 +307,7 @@ body {
 
 .btn {
   border: 2px solid #fff;
-  color: #3CA374;
+  color: #fff;
   background: none;
   cursor: pointer;
   display: block;
@@ -316,6 +317,7 @@ body {
   transition: all 0.3s; }
 
 .addbtn {
+  color: #3CA374;
   font-size: 2.5em;
   height: 50px;
   margin: 8px auto 8px auto;
@@ -326,6 +328,7 @@ body {
   background-repeat: no-repeat;
   background-size: 24px 24px;
   background-position: top;
+  color: #3CA374;
   height: 50px;
   width: 85%;
   text-align: right;
@@ -344,7 +347,7 @@ body {
 
 .btn:hover,
 .btn:active {
-  color: #333447;
+  color: #41425c;
   background-color: #fff !important; }
 
 .tablebtn {
@@ -388,7 +391,8 @@ body {
   text-align: center; }
 
 .tableid {
-  font-weight: bold; }
+  font-weight: bold;
+  color: #fff; }
 
 .addrowlength {
   font-weight: bold;
@@ -420,7 +424,7 @@ select {
   background-color: #e8eeef;
   width: 95%;
   border: 0;
-  color: #333447;
+  color: #41425c;
   padding: 2px;
   margin: 3px;
   font-weight: bold; }
@@ -434,13 +438,11 @@ input {
   background-color: #e8eeef;
   width: 95%;
   border: 0;
-  color: #333447;
   padding: 2px;
   margin: 0;
   font-weight: bold; }
 
 .tableinput {
-  color: #fff;
   border: none;
   background: transparent;
   text-align: center; }
@@ -453,6 +455,7 @@ input {
   background-color: #e8eeef; }
 
 .table-list {
+  color: #fff;
   overflow: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -499,6 +502,30 @@ ul::-webkit-scrollbar {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #fff; }
+
+/* base */
+.listitem-container {
+  backface-visibility: hidden;
+  z-index: 1; }
+
+/* moving */
+.listitem-container-move {
+  transition: all 600ms ease-in-out 50ms; }
+
+/* appearing */
+.listitem-container-enter-active {
+  transition: all 400ms ease-out; }
+
+/* disappearing */
+.listitem-container-leave-active {
+  transition: all 200ms ease-in;
+  position: absolute;
+  z-index: 0; }
+
+/* appear at / disappear to */
+.listitem-container-enter,
+.listitem-container-leave-to {
+  opacity: 0; }
 
 body {
   background: #2f3136; }
