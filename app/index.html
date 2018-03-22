@@ -13,10 +13,8 @@
   <div id="app">
     <div class="grid-container">
       <div class="logo">
-
       </div>
       <div class="grid-topbar">
-
       </div>
       <div class="grid-sidebar">
         <ul class="grid-sidebar-wrap">
@@ -128,18 +126,18 @@
       </div>
       <div class="grid-footer">
         <div class="grid-search">
-          
-            <input v-model="search" type="text" name="search" placeholder="Suchen..." onkeyup="filterList()">
-         
+          <input v-model="search" type="text" name="search" placeholder="Suchen..." onkeyup="filterList()">
         </div>
         <div class="grid-exportall">
-          <button v-on:click="exportAll" class="btn funcbtn">Alle Exportieren</button>
+          <button class="funcbtn hoverbtn btn">Alle Exportieren</button>
+          <button v-on:click="exportAll('xlsx')" style="margin-left: 0" class="funcbtn exportbtn btn">XLSX</button>
+          <button v-on:click="exportAll('json')" style="margin-right: 0"class="funcbtn exportbtn btn">JSON</button>
         </div>
         <div class="grid-exportlist">
-          <button v-on:click="exportList(currentList)" class="btn funcbtn">Liste Exportieren</button>
+          <button v-on:click="exportList(currentList)" class="funcbtn btn">Liste Exportieren</button>
         </div>
         <div class="grid-removelist">
-          <button v-on:click="removeTable" class="btn funcbtn">Liste entfernen</button>
+          <button v-on:click="removeTable" class="funcbtn btn">Liste entfernen</button>
         </div>
       </div>
     </div>

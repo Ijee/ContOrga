@@ -10,7 +10,7 @@ body {
   display: grid;
   grid-template-columns: 100px repeat(11, 1fr);
   grid-template-rows: 50px repeat(9, 1fr) 50px;
-  grid-template-areas: "logo topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar topbar"  "sidebar main main main main main main main main main main main"   "sidebar main main main main main main main main main main main" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main" "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
+  grid-template-areas: "logo main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"   "sidebar main main main main main main main main main main main" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main" "sidebar main main main main main main main main main main main"  "sidebar main main main main main main main main main main main" "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
 
 .grid-topbar {
   grid-area: topbar; }
@@ -207,6 +207,12 @@ body {
 .modal-cancel {
   grid-area: cancel; }
 
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
 body {
   font: caption;
   color: #41425c;
@@ -222,6 +228,7 @@ body {
   background-color: #202225; }
 
 .logo {
+  border-right: 1px solid #000;
   background-color: #202225;
   background-image: url("../asset/Contorga_logo_min.png");
   background-repeat: no-repeat;
@@ -288,7 +295,7 @@ body {
 
 .grid-search {
   top: 50%;
-  transform: translateY(50%);
+  transform: translateY(80%);
   margin-left: 4px;
   float: left;
   width: auto; }
@@ -344,6 +351,21 @@ body {
 
 .listbtn.active {
   background-color: #41454d; }
+
+.hoverbtn {
+  width: 156px; }
+
+.exportbtn {
+  display: none;
+  float: right;
+  width: 78px;
+  margin: 0; }
+
+.grid-exportall:hover .hoverbtn {
+  display: none; }
+
+.grid-exportall:hover .exportbtn {
+  display: block; }
 
 .btn:hover,
 .btn:active {
@@ -436,6 +458,7 @@ select {
 
 input {
   background-color: #e8eeef;
+  color: #201e1e;
   width: 95%;
   border: 0;
   padding: 2px;
@@ -444,6 +467,7 @@ input {
 
 .tableinput {
   border: none;
+  color: #fff;
   background: transparent;
   text-align: center; }
 
@@ -486,9 +510,10 @@ ul::-webkit-scrollbar {
   height: 0;
   opacity: 0.66; }
 
+/* with topbar top: 195px;*/
 .arrow.asc::after {
   position: absolute;
-  top: 195px;
+  top: 155px;
   padding-right: 0;
   bottom: 15px;
   border-left: 4px solid transparent;
@@ -497,7 +522,7 @@ ul::-webkit-scrollbar {
 
 .arrow.dsc::after {
   position: absolute;
-  top: 200px;
+  top: 145px;
   padding-right: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;

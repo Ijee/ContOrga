@@ -5,7 +5,9 @@ const ipc = electron.ipcRenderer
 
 
 const fs = require('fs')
+var xl = require('excel4node');
 var dialog = require('electron').remote.dialog;
+
 
 const app = electron.remote.app
 
@@ -32,7 +34,7 @@ var vueapp = new Vue({
     //temporary multiple modal window fix
     modalOpen: false,
 
-
+    //colums -> index.html table header
     columns: ['ID',
       'Sdg Nr',
       'Container Nr',
@@ -42,6 +44,7 @@ var vueapp = new Vue({
       'Abgabedatum',
       'Notiz',
       'Aktion'],
+    //actualColumns -> entries from tabellenEintrag
     actualColumns: ['ID',
       'SdgNr',
       'ContainerNr',
@@ -168,17 +171,17 @@ var vueapp = new Vue({
       return;
     },
     addRow: function () {
-      this.init = {
-        ID: Object.keys(this.tabellenEintrag).length + 1,
-        SdgNr: this.init.sdgnr,
-        ContainerNr: this.init.containernr,
-        Loeschdatum: this.init.loeschdatum,
-        Halle: this.init.halle,
-        Status: this.init.status,
-        Abgabedatum: this.init.abgabedatum,
-        Notiz: this.init.notiz
-      };
-      this.shipentries[this.currentList].tabellenEintrag.push(this.init);
+      newRow = {};
+      newRow[this.actualColumns[0]] = Object.keys(this.tabellenEintrag).length + 1;
+      newRow[this.actualColumns[1]] = this.init.sdgnr;
+      newRow[this.actualColumns[2]] = this.init.containernr;
+      newRow[this.actualColumns[3]] = this.init.loeschdatum;
+      newRow[this.actualColumns[4]] = this.init.halle;
+      newRow[this.actualColumns[5]] = this.init.status;
+      newRow[this.actualColumns[6]] = this.init.abgabedatum;
+      newRow[this.actualColumns[7]] = this.init.notiz;
+      
+      this.shipentries[this.currentList].tabellenEintrag.push(newRow);
       this.init = {};
       //scroll to bottom
       setTimeout(() => {
@@ -223,8 +226,6 @@ var vueapp = new Vue({
                 tmpData = JSON.parse(data);
                 vueapp.addTable(tmpData.shipInfo, tmpData.tabellenEintrag);
               }
-
-
             });
           }
         }
@@ -238,37 +239,63 @@ var vueapp = new Vue({
       file = dialog.showSaveDialog({
         defaultPath: filePath,
         filters: [
-          { name: 'json', extensions: ['json'] }
+          { name: 'json', extensions: ['json'] },
+          { name: 'xlsx', extensions: ['xlsx'] }
         ]
-
       });
       if (file) {
-        this.saveFile(file, this.currentList);
+        fileExt = file.substr(file.lastIndexOf('.') + 1);
+        this.saveFile(file, this.currentList, fileExt);
       }
     },
-    exportAll: function () {
+    exportAll: function (fileExt) {
       var savePath = app.getPath('home');
       date = new Date();
-      
+
       dir = dialog.showOpenDialog({
         defaultPath: savePath,
         buttonLabel: 'Alle Speichern',
         properties: [
-          'openDirectory', 
+          'openDirectory',
         ]
       });
-      if(dir[0]) {
-        for(i=0; i < this.shipentries.length; i++) {
-          filePath = path.join(dir[0], date.toISOString().substring(0, 10) + '-' + this.shipentries[i].shipInfo.name + '.json');
-          this.saveFile(filePath, i);
+      if (dir[0]) {
+        for (i = 0; i < this.shipentries.length; i++) {
+          filePath = path.join(dir[0], date.toISOString().substring(0, 10) + '-' + this.shipentries[i].shipInfo.name + '.' + fileExt);
+          this.saveFile(filePath, i, fileExt);
         }
       }
     },
-    saveFile: function (file, index) {
-      content = JSON.stringify(this.shipentries[index]);
-      fs.writeFile(file, content, (err) => {
-        if (err) throw err;
-      });
+    saveFile: function (file, index, fileExt) {
+      if (fileExt == 'json') {
+        content = JSON.stringify(this.shipentries[index]);
+        fs.writeFile(file, content, (err) => {
+          if (err) throw err;
+        });
+      } else {
+        wb = new xl.Workbook();
+        //name = file.split('.')[0];
+        name = file.replace(/^.*[\\\/]/, '').split('.')[0];
+        console.log(name);
+        ws = wb.addWorksheet(name);
+
+        style = wb.createStyle({
+          font: {
+            size: 12,
+          },
+          numberFormat: '$#,##0.00; ($#,##0.00); -'
+        });
+        for(i = 1; i < this.columns.length - 1; i++) {
+          ws.cell(1, i).string(this.columns[i]);
+        }
+        for (i = 0; i < this.shipentries[index].tabellenEintrag.length; i++) {
+          for (j = 1; j < this.actualColumns.length; j++) {
+            entry = this.shipentries[index].tabellenEintrag[i][this.actualColumns[j]];   
+            ws.cell(i + 2, j).string('' + entry).style(style);
+          }
+        }
+        wb.write(file);
+      }
     }
   }
 })

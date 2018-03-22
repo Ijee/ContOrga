@@ -1,3 +1,10 @@
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
 body {
     font: caption;
     color: $base-font-color;
@@ -16,6 +23,7 @@ body {
 }
 
 .logo {
+    border-right: 1px solid #000;
     background-color: $sidebar-main-color;
     background-image: url('../asset/Contorga_logo_min.png');
     background-repeat: no-repeat;
@@ -101,7 +109,7 @@ body {
 
 .grid-search {
     top: 50%;
-    transform: translateY(50%);
+    transform: translateY(80%);
     margin-left: 4px;
     float: left;
     width: auto;
@@ -133,8 +141,6 @@ body {
 	outline: none;
 	transition: all 0.3s;
 }
-
-
 
 .addbtn {
     color: $modal-button-color-2;
@@ -169,6 +175,24 @@ body {
     background-color: $sidebar-active-btn;
 }
 
+.hoverbtn {
+    width: 156px;
+}
+
+.exportbtn {
+    display: none;
+    float: right;
+    width: 78px;
+    margin: 0;
+}
+
+.grid-exportall:hover .hoverbtn {
+    display: none;
+}
+
+.grid-exportall:hover .exportbtn {
+    display: block;
+}
 
 .btn:hover,
 .btn:active {
@@ -236,7 +260,7 @@ body {
     text-align: center;
 }
 .table-content:nth-child(odd), .table-odd {
-    background: rgb(136, 143, 155); 
+    background: #888f9b; 
     text-align: center;
 }
 
@@ -274,14 +298,17 @@ select {
 }
 input {
     background-color: $input-color;
+    color: rgb(32, 30, 30);
     width: 95%;
     border: 0;
     padding: 2px;
     margin: 0;
     font-weight: bold;
 }
+
 .tableinput {
     border: none;
+    color: #fff;
     background: transparent;
     text-align: center;
 }
@@ -322,7 +349,6 @@ ul::-webkit-scrollbar {
     float: right;
 }
 .arrow::after {
-    
     vertical-align: middle;
     content: '';
     width: 0;
@@ -330,19 +356,20 @@ ul::-webkit-scrollbar {
     opacity: 0.66;
 }
   
+/* with topbar top: 195px;*/
 .arrow.asc::after {
     position: absolute;
-    top: 195px;
+    top: 155px;
     padding-right: 0;
     bottom: 15px;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 4px solid #fff;
 }
-  
+
 .arrow.dsc::after {
     position: absolute;
-    top: 200px;
+    top: 145px;
     padding-right: 0;    
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
