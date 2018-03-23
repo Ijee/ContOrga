@@ -263,6 +263,7 @@ var vueapp = new Vue({
         for (i = 0; i < this.shipentries.length; i++) {
           filePath = path.join(dir[0], date.toISOString().substring(0, 10) + '-' + this.shipentries[i].shipInfo.name + '.' + fileExt);
           this.saveFile(filePath, i, fileExt);
+          console.log('test');
         }
       }
     },
@@ -285,8 +286,9 @@ var vueapp = new Vue({
           },
           numberFormat: '$#,##0.00; ($#,##0.00); -'
         });
+        //this.columns.length - 1 to suppress the last column in the file output
         for(i = 1; i < this.columns.length - 1; i++) {
-          ws.cell(1, i).string(this.columns[i]);
+          ws.cell(1, i).string(this.columns[i]).style({ font: { bold: true}});
         }
         for (i = 0; i < this.shipentries[index].tabellenEintrag.length; i++) {
           for (j = 1; j < this.actualColumns.length; j++) {

@@ -23,6 +23,7 @@ function createWindow() {
     minWidth: 950,
     minHeight: 500,
     backgroundColor: '#202225',
+    icon: path.join(__dirname, 'app/asset/Contorga_logo_min.png'),
     show: false
   })
 
