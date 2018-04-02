@@ -207,12 +207,6 @@ body {
 .modal-cancel {
   grid-area: cancel; }
 
-html {
-  box-sizing: border-box; }
-
-*, *:before, *:after {
-  box-sizing: inherit; }
-
 body {
   font: caption;
   color: #41425c;
