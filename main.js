@@ -7,6 +7,8 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+const debug = /--debug/.test(process.argv[2])
+
 const ipc = require('electron').ipcMain
 
 
@@ -35,14 +37,17 @@ function createWindow() {
     protocol: 'file:',
     slashes: true
   }))
+  // Launch fullscreen with DevTools open, usage: npm run debug
+  if (debug) {
+    mainWindow.webContents.openDevTools()
+    mainWindow.maximize()
+    require('devtron').install()
+  }
+
   mainWindow.on('ready-to-show', function () {
     mainWindow.show();
     mainWindow.focus();
   });
-
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

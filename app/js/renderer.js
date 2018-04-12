@@ -348,7 +348,11 @@ var vueapp = new Vue({
         for (var i = 0; i < this.shipentries[index].tabellenEintrag.length; i++) {
           for (var j = 1; j < this.actualColumns.length; j++) {
             entry = this.shipentries[index].tabellenEintrag[i][this.actualColumns[j]];
-            ws.cell(i + 2, j).string('' + entry).style(style);
+            if(entry == null) {
+              ws.cell(i + 2, j).string('').style(style);
+            } else {
+              ws.cell(i + 2, j).string('' + entry).style(style);
+            }
           }
         }
         wb.write(file);
