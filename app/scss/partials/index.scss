@@ -337,7 +337,11 @@ ul {
 ul::-webkit-scrollbar {
     display: none;
 }
-  
+
+[v-cloak] {
+    display: none !important;
+}
+
 .arrow {
     float: right;
 }

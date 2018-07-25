@@ -5,6 +5,7 @@ const ipc = electron.ipcRenderer
 
 const fs = require('fs')
 var xl = require('excel4node');
+
 var dialog = require('electron').remote.dialog;
 
 const app = electron.remote.app
@@ -395,3 +396,4 @@ ipc.on('ship-information', function (event, functionality) {
     vueapp.loadFiles();
   }
 })
+
