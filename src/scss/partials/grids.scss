@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 .grid-container {
   width: 100vw;
@@ -10,49 +11,58 @@ body {
   display: grid;
   grid-template-columns: 100px repeat(11, 1fr);
   grid-template-rows: 50px repeat(9, 1fr) 50px;
-  grid-template-areas: "logo main main main main main main main main main main main" 
-  "sidebar main main main main main main main main main main main"  
-  "sidebar main main main main main main main main main main main"
-    "sidebar main main main main main main main main main main main" 
-     "sidebar main main main main main main main main main main main" 
-     "sidebar main main main main main main main main main main main" 
-      "sidebar main main main main main main main main main main main" 
-      "sidebar main main main main main main main main main main main" 
-       "sidebar main main main main main main main main main main main"
-        "sidebar main main main main main main main main main main main" 
-         "sidebar main main main main main main main main main main main"
-          "addlistitem footer footer footer footer footer footer footer footer footer footer footer"; }
+  grid-template-areas:
+    "logo main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "sidebar main main main main main main main main main main main"
+    "addlistitem footer footer footer footer footer footer footer footer footer footer footer";
+}
 
 .grid-topbar {
-  grid-area: topbar; }
+  grid-area: topbar;
+}
 
 .logo {
-  grid-area: logo; }
+  grid-area: logo;
+}
 
 .grid-sidebar {
-  grid-area: sidebar; }
+  grid-area: sidebar;
+}
 
 .grid-main-info {
-  grid-area: info; }
+  grid-area: info;
+}
 
 .grid-main-content {
-  grid-area: content; }
+  grid-area: content;
+}
 
 .grid-footer {
-  grid-area: footer; }
+  grid-area: footer;
+}
 
 .addlistitem {
-  grid-area: addlistitem; }
+  grid-area: addlistitem;
+}
 
 /* grid-main grid */
 .grid-main {
-    grid-area: main;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 12px 1fr 12px;
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 12px 1fr 12px;
 }
 
-.grid-main-wrap{
+.grid-main-wrap {
   grid-area: wrap;
   grid-row-start: 2;
   grid-row-end: 3;
@@ -60,52 +70,60 @@ body {
   grid-column-end: 1;
 }
 
-
 /* second grid inside grid-main-info */
 .grid-main-info {
   grid-template-columns: 2fr 10fr 1fr 2fr 10fr;
   grid-template-rows: repeat(3, 1fr);
   display: grid;
-  grid-template-areas: "title title title title title"
-                       "name name-input filler eta eta-input"
-                       "note note-input note-input note-input note-input"; }
+  grid-template-areas:
+    "title title title title title"
+    "name name-input filler eta eta-input"
+    "note note-input note-input note-input note-input";
+}
 
 .grid-main-title {
-  grid-area: title; }
+  grid-area: title;
+}
 
 .main-name {
-  grid-area: name; }
+  grid-area: name;
+}
 
 .main-name-input {
-  grid-area: name-input; }
+  grid-area: name-input;
+}
 
 .main-filler {
-  grid-area: filler; }
+  grid-area: filler;
+}
 
 .main-eta {
-  grid-area: eta; }
+  grid-area: eta;
+}
 
 .main-eta-input {
-  grid-area: eta-input; }
+  grid-area: eta-input;
+}
 
 .main-note {
-  grid-area: note; }
+  grid-area: note;
+}
 
 .main-note-input {
-  grid-area: note-input; }
+  grid-area: note-input;
+}
 
 .grid-main-content {
   grid-template-columns: 1fr;
   grid-template-rows: 30px 1fr;
-  grid-template-areas: "content-title"
-                       "table";
+  grid-template-areas:
+    "content-title"
+    "table";
 }
 
 .grid-main-content-title {
   grid-area: content-title;
 }
-
-
 
 /* */
 .table-content {
@@ -155,31 +173,31 @@ body {
   grid-template-areas: "heading1 heading2 heading3 heading4 heading5 heading6 heading7 heading8 heading9";
 }
 
-.heading1{
+.heading1 {
   grid-area: heading1;
 }
-.heading2{
+.heading2 {
   grid-area: heading2;
 }
-.heading3{
+.heading3 {
   grid-area: heading3;
 }
-.heading4{
+.heading4 {
   grid-area: heading4;
 }
-.heading5{
+.heading5 {
   grid-area: heading5;
 }
-.heading6{
+.heading6 {
   grid-area: heading6;
 }
-.heading7{
+.heading7 {
   grid-area: heading7;
 }
-.heading8{
+.heading8 {
   grid-area: heading8;
 }
-.heading9{
+.heading9 {
   grid-area: heading9;
 }
 
@@ -227,12 +245,13 @@ body {
 }
 
 /* modal.html grid */
-.modal-content {
+.modal {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   display: grid;
-  grid-template-areas: "addnew loadnew"
-                       "cancel cancel"; 
+  grid-template-areas:
+    "addnew loadnew"
+    "cancel cancel";
 }
 
 .modal-addnew {
