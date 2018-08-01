@@ -177,6 +177,7 @@
           :is-disabled="isDisabled"
           :search="search"
           @filterList="filterList"
+          @exportList="exportList"
           @exportAll="exportAll($event)"
           @removeShip="removeShip"/>
       </div>
@@ -285,6 +286,12 @@ export default {
       console.log(this.$refs.mainShipEntries);
       this.$refs.mainShipEntries.loadFiles();
       this.isModal = false;
+    },
+    exportList() {
+      this.$refs.mainShipEntries.exportList();
+    },
+    exportAll() {
+      this.$refs.mainShipEntries.exportAll();
     },
     /**
      * Adds the necessary css classes to display the arrow for sorting the table.

@@ -26,13 +26,21 @@
       <button
         :disabled="isDisabled"
         class="funcbtn btn"
-        @click="exportList(currentList)">Liste Exportieren</button>
+        @click="exportList()">Liste Exportieren</button>
     </div>
     <div class="grid-removelist">
       <button
         :disabled="isDisabled"
         class="funcbtn btn"
         @click="removeShip">Liste entfernen</button>
+    </div>
+    <div class="grid-settings">
+      <router-link
+        to="/settings"
+        class="funcbtn btn"
+        tag="button">
+        Settings
+      </router-link>
     </div>
   </div>
 </template>
@@ -57,6 +65,9 @@ export default {
   methods: {
     filterList() {
       this.$emit('filterList');
+    },
+    exportList() {
+      this.$emit('exportList');
     },
     exportAll(fileExt) {
       this.$emit('exportAll', fileExt);

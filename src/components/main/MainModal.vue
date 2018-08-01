@@ -2,7 +2,8 @@
   <div class="container">
     <div
       :class="isModal ? 'active' : 'inactive'"
-      class="modal-wrapper">
+      class="modal-wrapper"
+      @click="cancel">>
       <div class="modal">
         <div class="modal-addnew">
           <button

@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <ul class="grid-sidebar-wrap">
+    <transition-group
+      name="shipitem-group"
+      tag="ul"
+      class="grid-sidebar-wrap">
       <li
         v-for="(schiff, index) in shipentries"
         :key="index"
@@ -12,7 +15,7 @@
           <span class="listitem-name">{{ schiff.shipInfo.name | first8 }}</span>
         </button>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -81,9 +84,13 @@ export default {
       this.shipentries.splice(this.currentList, 1);
       if (this.currentList > 0) {
         this.changeShip(this.currentList - 1);
+      } else if (this.shipentries.length >= 1) {
+        this.changeShip(0);
       } else {
-        this.shipInfo = { name: '', eta: '', schiffsnotiz: '' };
-        this.tabellenEintrag = [];
+        // this.shipInfo = { name: '', eta: '', schiffsnotiz: '' };
+        // this.tabellenEintrag = [];
+        const emptyShip = new Ship({ name: '', eta: '', schiffsnotiz: '' }, []);
+        this.$emit('shipChanged', emptyShip);
         this.$emit('disableButtons');
       }
     },
@@ -125,16 +132,15 @@ export default {
   },
   /**
    * Exports the currently selected table as either json or xlsx to a specified path.
-   * @param index the index of the list that is going to get exported.
    */
-  exportList(index) {
+  exportList() {
     const savePath = app.getPath('home');
     const date = new Date();
     const filePath = path.join(
       savePath,
       date.toISOString().substring(0, 10) +
         '-' +
-        this.shipentries[index].shipInfo.name +
+        this.shipentries[this.currentList].shipInfo.name +
         '.json',
     );
     const file = dialog.showSaveDialog({
@@ -238,4 +244,18 @@ export default {
 
 
 <style scoped lang="scss">
+.grid-sidebar-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.listitem-container {
+  transition: opacity 0.8s;
+}
+.shipitem-group-enter,
+.shipitem-group-leave-to {
+  opacity: 0;
+}
+.list-complete-leave-active {
+  opacity: 1;
+}
 </style>
